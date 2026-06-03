@@ -3,10 +3,10 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import AdminPanel from './AdminPanel.jsx'
 
-const ruta = window.location.hash
+const esAdmin = window.location.hash === '#admin'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {ruta === '#admin' ? <AdminPanel /> : <App />}
+    {esAdmin ? <AdminPanel /> : <App />}
   </StrictMode>,
 )
