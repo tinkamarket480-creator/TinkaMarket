@@ -43,7 +43,7 @@ const CSS = `
   /* ── NAVBAR ── */
   .nav {
     width: 100%;
-    background: var(--grad);
+    background: var(--white);
     display: flex;
     align-items: center;
     height: 64px;
@@ -52,62 +52,63 @@ const CSS = `
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 20px rgba(120,18,8,0.35);
+    border-bottom: 1px solid #EFE6D8;
+    box-shadow: 0 2px 14px rgba(60,20,0,0.05);
   }
   .nav-logo {
     display: flex; align-items: center; gap: 10px;
     cursor: pointer; flex-shrink: 0; text-decoration: none;
   }
   .nav-logo-img {
-    height: 40px; width: 40px;
+    height: 38px; width: 38px;
     object-fit: contain; border-radius: 10px;
-    background: rgba(255,255,255,0.18);
-    border: 1.5px solid rgba(255,255,255,0.35);
+    background: var(--grad);
     padding: 4px;
     transition: transform 0.2s;
   }
   .nav-logo-img:hover { transform: scale(1.08); }
-  .nav-brand { font-family: var(--font-head); color: white; font-weight: 900; font-size: 19px; letter-spacing: -0.3px; }
+  .nav-brand { font-family: var(--font-head); color: var(--cafe); font-weight: 900; font-size: 19px; letter-spacing: -0.3px; }
 
   .search-wrap {
     flex: 1; display: flex;
-    background: rgba(255,255,255,0.18);
-    border: 1.5px solid rgba(255,255,255,0.35);
+    background: var(--gris);
+    border: 1.5px solid #EFE6D8;
     border-radius: 50px;
     overflow: hidden;
     height: 42px;
     transition: background 0.2s, border 0.2s;
-    backdrop-filter: blur(4px);
   }
   .search-wrap:focus-within {
-    background: rgba(255,255,255,0.28);
-    border-color: rgba(255,255,255,0.6);
+    background: var(--white);
+    border-color: var(--rojo);
   }
   .search-inp {
     flex: 1; padding: 0 18px;
     background: transparent; border: none; outline: none;
-    font-size: 14px; color: white;
+    font-size: 14px; color: var(--text);
     font-family: var(--font-body);
   }
-  .search-inp::placeholder { color: rgba(255,255,255,0.65); }
+  .search-inp::placeholder { color: var(--muted); }
   .search-btn {
-    background: rgba(255,255,255,0.2); border: none;
+    background: transparent; border: none;
     padding: 0 18px; cursor: pointer; font-size: 16px;
-    color: white; transition: background 0.2s;
-    border-left: 1px solid rgba(255,255,255,0.2);
+    color: var(--rojo); transition: background 0.2s;
   }
-  .search-btn:hover { background: rgba(255,255,255,0.32); }
+  .search-btn:hover { background: #fff0ee; }
 
-  .nav-actions { display: flex; gap: 8px; flex-shrink: 0; }
+  .nav-actions { display: flex; gap: 8px; flex-shrink: 0; align-items: center; }
   .nav-btn {
-    background: rgba(255,255,255,0.18);
-    border: 1.5px solid rgba(255,255,255,0.35);
-    color: white; padding: 7px 16px; border-radius: 50px;
+    background: var(--gris);
+    border: 1.5px solid #EFE6D8;
+    color: var(--cafe); padding: 9px 16px; border-radius: 50px;
     cursor: pointer; font-size: 13px; font-weight: 700;
     white-space: nowrap; font-family: var(--font-body);
-    transition: background 0.18s, transform 0.15s;
+    transition: all 0.18s;
+    display: flex; align-items: center; justify-content: center;
   }
-  .nav-btn:hover { background: rgba(255,255,255,0.32); transform: translateY(-1px); }
+  .nav-btn:hover { border-color: var(--rojo); color: var(--rojo); background: #fff0ee; transform: translateY(-1px); }
+  .nav-btn-primary { background: var(--grad); border: none; color: white; box-shadow: 0 3px 10px rgba(192,57,43,0.28); }
+  .nav-btn-primary:hover { color: white; border-color: transparent; opacity: 0.92; }
 
   /* ── HERO ── */
   .hero {
@@ -140,7 +141,7 @@ const CSS = `
   .hero-title .oro { color: var(--oro2); }
   .hero-title .verde { color: #7ECBA1; }
   .hero-sub {
-    color: rgba(255,255,255,0.8); font-size: 15px; margin-bottom: 28px;
+    color: rgba(255,255,255,0.85); font-size: 15px; margin-bottom: 28px;
   }
 
   /* Carrusel hero */
@@ -152,17 +153,26 @@ const CSS = `
   .hero-carousel::-webkit-scrollbar { display: none; }
   .hero-card {
     min-width: 160px; flex-shrink: 0;
-    background: rgba(255,255,255,0.14);
-    border: 1px solid rgba(255,255,255,0.28);
-    border-radius: 14px; padding: 16px;
+    background: rgba(255,255,255,0.95);
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 14px; padding: 12px;
     scroll-snap-align: start; text-align: left;
-    backdrop-filter: blur(6px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     transition: transform 0.2s;
   }
   .hero-card:hover { transform: translateY(-3px); }
-  .hero-card-name { color: white; font-weight: 700; font-size: 13px; margin-bottom: 4px; }
-  .hero-card-price { color: var(--oro2); font-weight: 900; font-size: 17px; margin-bottom: 4px; }
-  .hero-card-likes { color: rgba(255,255,255,0.65); font-size: 12px; }
+  .hero-card-img {
+    width: 100%; height: 88px; border-radius: 10px;
+    object-fit: cover; margin-bottom: 10px; display: block;
+    background: var(--gris);
+  }
+  .hero-card-img-empty {
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+  }
+  .hero-card-name { color: var(--text); font-weight: 700; font-size: 13px; margin-bottom: 4px; }
+  .hero-card-price { color: var(--rojo); font-weight: 900; font-size: 17px; margin-bottom: 4px; font-family: var(--font-head); }
+  .hero-card-likes { color: var(--muted); font-size: 12px; }
 
   /* ── WRAP / PAGE ── */
   .page { width: 100%; max-width: 1200px; margin: 0 auto; padding: 32px 20px 60px; }
@@ -216,6 +226,9 @@ const CSS = `
   .prod-img::after {
     content: ''; position: absolute; bottom: 0; left: 0; right: 0;
     height: 40px; background: linear-gradient(transparent, rgba(0,0,0,0.04));
+  }
+  .prod-img-photo {
+    height: 148px; width: 100%; object-fit: cover; display: block; background: var(--gris);
   }
   .prod-body { padding: 14px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
   .prod-name { font-weight: 700; font-size: 13px; line-height: 1.4; color: var(--text); }
@@ -423,7 +436,7 @@ const CSS = `
     box-shadow: 0 4px 18px rgba(192,57,43,0.35);
   }
 
-  /* ── STEPS (cómo vender) ── */
+  /* ── STEPS ── */
   .step-row { display: flex; gap: 18px; margin-bottom: 26px; }
   .step-num {
     width: 42px; height: 42px; border-radius: 14px;
@@ -455,8 +468,7 @@ const CSS = `
   .modal-title { font-family: var(--font-head); font-size: 18px; font-weight: 800; margin-bottom: 10px; }
   .modal-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; line-height: 1.6; }
 
-  /* ── PAGO / CULQI PLACEHOLDER ── */
-  /* Preparado para integrar Culqi — se activa cuando se implemente el botón de pago */
+  /* ── PAGO / CULQI ── */
   .pago-section { background: linear-gradient(135deg, #FDF6EC, #FFF8F0); border-radius: var(--radius); padding: 24px; border: 2px dashed #E8D0A0; margin-bottom: 24px; }
   .pago-title { font-family: var(--font-head); font-weight: 800; font-size: 16px; color: var(--cafe); margin-bottom: 6px; }
   .pago-price { font-family: var(--font-head); font-weight: 900; font-size: 28px; color: var(--rojo); }
@@ -469,6 +481,61 @@ const CSS = `
     background: var(--gris);
   }
   .upload-area:hover { border-color: var(--rojo); background: #fff7f5; }
+
+  /* ── PANTALLA DE BAN ── */
+  .ban-screen {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #2A0505 0%, #1C0A00 60%);
+    display: flex; align-items: center; justify-content: center; padding: 20px;
+  }
+  .ban-card {
+    background: #1A0808;
+    border: 1px solid rgba(239,68,68,0.3);
+    border-radius: 24px; padding: 40px 36px;
+    max-width: 440px; width: 100%; text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  }
+  .ban-icon { font-size: 64px; margin-bottom: 20px; display: block; }
+  .ban-title { font-family: var(--font-head); font-size: 26px; font-weight: 900; color: #EF4444; margin-bottom: 10px; }
+  .ban-sub { color: #9CA3AF; font-size: 14px; line-height: 1.7; margin-bottom: 28px; }
+  .ban-motivo {
+    background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25);
+    border-radius: 12px; padding: 14px 18px; margin-bottom: 24px; text-align: left;
+  }
+  .ban-motivo-label { font-size: 11px; color: #6B7280; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .ban-motivo-txt { font-size: 14px; color: #F9FAFB; line-height: 1.6; }
+  .ban-pago {
+    background: linear-gradient(135deg, #1F1209, #2A1A08);
+    border: 1px solid rgba(212,160,23,0.3);
+    border-radius: 16px; padding: 22px; margin-bottom: 20px;
+  }
+  .ban-pago-label { font-size: 12px; color: #9CA3AF; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .ban-pago-monto { font-family: var(--font-head); font-size: 40px; font-weight: 900; color: #D4A017; margin-bottom: 6px; }
+  .ban-pago-sub { font-size: 12px; color: #9CA3AF; margin-bottom: 16px; }
+  .btn-pagar-multa {
+    display: block; width: 100%; padding: 14px;
+    background: linear-gradient(135deg, #854F0B, #D4A017);
+    color: white; border: none; border-radius: 50px; font-size: 15px;
+    font-weight: 800; cursor: pointer; font-family: var(--font-body);
+    box-shadow: 0 4px 16px rgba(212,160,23,0.3);
+    transition: opacity 0.18s, transform 0.15s;
+    margin-bottom: 10px;
+  }
+  .btn-pagar-multa:hover { opacity: 0.9; transform: translateY(-2px); }
+  .btn-pagar-multa:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+  .btn-logout-ban {
+    display: block; width: 100%; padding: 12px;
+    background: transparent; border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50px; color: #6B7280; font-size: 14px;
+    font-weight: 700; cursor: pointer; font-family: var(--font-body);
+    transition: all 0.18s;
+  }
+  .btn-logout-ban:hover { border-color: rgba(255,255,255,0.3); color: #9CA3AF; }
+  .ban-permanente {
+    background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3);
+    border-radius: 12px; padding: 16px; color: #EF4444;
+    font-size: 14px; font-weight: 700; margin-bottom: 20px;
+  }
 
   @media (max-width: 600px) {
     .nav { padding: 0 12px; gap: 10px; }
@@ -487,6 +554,21 @@ const CATS_INFO = [
   { nombre:"Artesanales",     desc:"Textiles, cerámica y arte",     bg:"linear-gradient(135deg,#8B4513,#5C2D0A)", icon:"🎨" },
   { nombre:"Otros",           desc:"Variedad de productos locales", bg:"linear-gradient(135deg,#6B3FA0,#4A2070)", icon:"✨" },
 ];
+
+// ─── Helpers de imagen ────────────────────────────────────────────────
+function catIconDe(categoria) {
+  return CATS_INFO.find(c => c.nombre === categoria)?.icon || "📦";
+}
+function ProdImg({ p }) {
+  return p.fotos && p.fotos[0]
+    ? <img src={p.fotos[0]} alt={p.nombre} className="prod-img-photo" />
+    : <div className="prod-img">{catIconDe(p.categoria)}</div>;
+}
+function HeroImg({ p }) {
+  return p.fotos && p.fotos[0]
+    ? <img src={p.fotos[0]} alt={p.nombre} className="hero-card-img" />
+    : <div className="hero-card-img hero-card-img-empty">{catIconDe(p.categoria)}</div>;
+}
 
 const UBIGEO = {
   "Amazonas":{"Chachapoyas":["Chachapoyas","Asunción","Balsas","Cheto","Chiliquín","Chuquibamba","Granada","Huancas","La Jalca","Leimebamba","Levanto","Magdalena","Mariscal Castilla","Molinopampa","Montevideo","Olleros","Quinjalca","San Francisco de Daguas","San Isidro de Maino","Soloco","Sonche"],"Bagua":["Bagua","La Peca","Aramango","Copallin","El Parco","Imaza","Copallín"],"Bongará":["Jumbilla","Chisquilla","Churuja","Corosha","Cuispes","Florida","Jazán","Recta","San Carlos","Shipasbamba","Valera","Yambrasbamba"],"Utcubamba":["Bagua Grande","Cajaruro","Cumba","El Milagro","Jamalca","Lonya Grande","Yamón"]},
@@ -514,19 +596,18 @@ const UBIGEO = {
   "Ucayali":{"Coronel Portillo":["Callería","Campoverde","Iparia","Masisea","Yarinacocha","Nueva Requena","Manantay"],"Padre Abad":["Padre Abad","Irazola","Curimaná","Neshuya","Alexander Von Humboldt"],"Atalaya":["Raymondi","Sepahua","Tahuania","Yurúa"],"Purús":["Purús"]},
 };
 
-// ─── Culqi helpers (preparados, pendiente de activar con tus keys) ──
-// Para activar: cargar script de Culqi en index.html y reemplazar YOUR_CULQI_PUBLIC_KEY
+// ─── Culqi ───────────────────────────────────────────────────────────
 function abrirPagoCulqi({ monto, descripcion, email, onSuccess }) {
   if (typeof window.Culqi === "undefined") {
     alert("Culqi no está disponible en este momento. Por favor intente más tarde.");
     return;
   }
-  window.Culqi.publicKey = "YOUR_CULQI_PUBLIC_KEY"; // ← reemplazar con tu key
+  window.Culqi.publicKey = "YOUR_CULQI_PUBLIC_KEY"; // ← reemplazar
   window.Culqi.settings({
     title: "TinkaMarket 🇵🇪",
     currency: "PEN",
     description: descripcion,
-    amount: monto * 100, // en céntimos
+    amount: monto * 100,
   });
   window.Culqi.open();
   window.culqi = () => {
@@ -541,31 +622,32 @@ function abrirPagoCulqi({ monto, descripcion, email, onSuccess }) {
 
 // ─── Componente principal ─────────────────────────────────────────────
 export default function App() {
-  const [pantalla, setPantalla] = useState("inicio");
-  const [usuario, setUsuario] = useState(null);
-  const [perfilDB, setPerfilDB] = useState(null);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [busqueda, setBusqueda] = useState("");
-  const [filtroCat, setFiltroCat] = useState("Todos");
-  const [productos, setProductos] = useState([]);
-  const [tiendas, setTiendas] = useState([]);
-  const [miTienda, setMiTienda] = useState(null);
-  const [carrito, setCarrito] = useState([]);
+  const [pantalla, setPantalla]           = useState("inicio");
+  const [usuario, setUsuario]             = useState(null);
+  const [perfilDB, setPerfilDB]           = useState(null);
+  const [menuOpen, setMenuOpen]           = useState(false);
+  const [busqueda, setBusqueda]           = useState("");
+  const [filtroCat, setFiltroCat]         = useState("Todos");
+  const [productos, setProductos]         = useState([]);
+  const [tiendas, setTiendas]             = useState([]);
+  const [miTienda, setMiTienda]           = useState(null);
+  const [carrito, setCarrito]             = useState([]);
   const [tiendaCarrito, setTiendaCarrito] = useState(null);
-  const [modalVaciar, setModalVaciar] = useState(null);
+  const [modalVaciar, setModalVaciar]     = useState(null);
   const [mostrarPerfil, setMostrarPerfil] = useState(false);
+  const [pagandoMulta, setPagandoMulta]   = useState(false);
 
-  const [perfilForm, setPerfilForm] = useState({ nombre:"", apellido:"", departamento:"", provincia:"", distrito:"" });
-  const [tiendaForm, setTiendaForm] = useState({ nombre:"", whatsapp:"", departamento:"", provincia:"", distrito:"", direccion:"", descripcion:"" });
-  const [tiendaFoto, setTiendaFoto] = useState(null);
+  const [perfilForm, setPerfilForm]   = useState({ nombre:"", apellido:"", departamento:"", provincia:"", distrito:"" });
+  const [tiendaForm, setTiendaForm]   = useState({ nombre:"", whatsapp:"", departamento:"", provincia:"", distrito:"", direccion:"", descripcion:"" });
+  const [tiendaFoto, setTiendaFoto]   = useState(null);
   const [tiendaFotoPreview, setTiendaFotoPreview] = useState(null);
-  const [prodForm, setProdForm] = useState({ nombre:"", precio:"", cantidad:"", descripcion:"", categoria:"Procesados" });
-  const [prodFotos, setProdFotos] = useState([]);
+  const [prodForm, setProdForm]       = useState({ nombre:"", precio:"", cantidad:"", descripcion:"", categoria:"Procesados" });
+  const [prodFotos, setProdFotos]     = useState([]);
   const [prodFotosPrev, setProdFotosPrev] = useState([]);
-  const [misLikes, setMisLikes] = useState([]);
+  const [misLikes, setMisLikes]       = useState([]);
   const [reporteForm, setReporteForm] = useState({ tipo:"reporte_usuario", id_reportado:"", detalle:"" });
 
-  const [msg, setMsg] = useState("");
+  const [msg, setMsg]           = useState("");
   const [guardando, setGuardando] = useState(false);
   const carruselRef = useRef(null);
 
@@ -575,7 +657,10 @@ export default function App() {
     });
     supabase.auth.onAuthStateChange((_e, session) => {
       if (session?.user) iniciarSesion(session.user);
-      else { setUsuario(null); setPerfilDB(null); setMiTienda(null); setMostrarPerfil(false); }
+      else {
+        setUsuario(null); setPerfilDB(null); setMiTienda(null);
+        setMostrarPerfil(false); setPantalla("inicio");
+      }
     });
     cargarProductos();
     cargarTiendas();
@@ -584,19 +669,34 @@ export default function App() {
   async function iniciarSesion(user) {
     setUsuario(user);
     const { data: perfil } = await supabase.from("usuarios").select("*").eq("email", user.email).single();
+
+    // ── CHEQUEO DE BAN ────────────────────────────────────────────
+    if (perfil?.baneado) {
+      setPerfilDB(perfil);
+      setPantalla("baneado");
+      setMostrarPerfil(false);
+      return;
+    }
+
+    // ── PERFIL INCOMPLETO ─────────────────────────────────────────
     if (!perfil || !perfil.perfil_completo) {
-      setMostrarPerfil(true); setPerfilDB(perfil);
-    } else {
-      setPerfilDB(perfil); setMostrarPerfil(false); cargarMiTienda(user.id); cargarMisLikes();
-      // Autocompletar ubicación de tienda desde el perfil del usuario
-      if (perfil.departamento) {
-        setTiendaForm(f => ({
-          ...f,
-          departamento: perfil.departamento || "",
-          provincia:    perfil.provincia    || "",
-          distrito:     perfil.distrito     || "",
-        }));
-      }
+      setMostrarPerfil(true);
+      setPerfilDB(perfil);
+      return;
+    }
+
+    // ── SESIÓN NORMAL ─────────────────────────────────────────────
+    setPerfilDB(perfil);
+    setMostrarPerfil(false);
+    cargarMiTienda(user.id);
+    cargarMisLikes();
+    if (perfil.departamento) {
+      setTiendaForm(f => ({
+        ...f,
+        departamento: perfil.departamento || "",
+        provincia:    perfil.provincia    || "",
+        distrito:     perfil.distrito     || "",
+      }));
     }
   }
 
@@ -655,6 +755,34 @@ export default function App() {
     setPantalla("inicio"); setMenuOpen(false);
   }
 
+  // ── PAGO MULTA ────────────────────────────────────────────────────
+  async function pagarMulta() {
+    if (!usuario || !perfilDB) return;
+    const monto = perfilDB.multa_monto || 10;
+    setPagandoMulta(true);
+    abrirPagoCulqi({
+      monto,
+      descripcion: "Multa de reactivación de cuenta - TinkaMarket",
+      email: usuario.email,
+      onSuccess: async (token) => {
+        await supabase.from("pagos").insert({
+          tipo: "multa_desbaneo", monto, estado: "pagado", token_culqi: token.id,
+        });
+        await supabase.from("usuarios").update({
+          baneado: false,
+          ban_motivo: null,
+          historial_bans: (perfilDB.historial_bans || 0) + 1,
+          multa_monto: Math.min((perfilDB.multa_monto || 10) * 2, 50),
+        }).eq("id", perfilDB.id);
+        await supabase.from("tiendas").update({ estado: "activa" }).eq("usuario_id", usuario.id);
+        setPagandoMulta(false);
+        setPantalla("inicio");
+        iniciarSesion(usuario);
+      },
+    });
+    setPagandoMulta(false);
+  }
+
   async function crearTienda() {
     if (!tiendaForm.nombre || !tiendaForm.whatsapp || !tiendaForm.departamento || !tiendaForm.provincia || !tiendaForm.distrito) {
       setMsg("Completa los campos obligatorios."); return;
@@ -686,7 +814,6 @@ export default function App() {
   async function publicarProducto() {
     if (!prodForm.nombre || !prodForm.precio || !prodForm.cantidad) { setMsg("Completa los campos obligatorios."); return; }
     setGuardando(true);
-    // Subir hasta 4 fotos
     const fotos_urls = [];
     for (const foto of prodFotos.slice(0,4)) {
       const ext = foto.name.split(".").pop();
@@ -722,7 +849,7 @@ export default function App() {
 
   async function darLike(prod) {
     if (!usuario) { login(); return; }
-    if (misLikes.includes(prod.id)) return; // ya dio like
+    if (misLikes.includes(prod.id)) return;
     const { error } = await supabase.from("likes").insert({ usuario_id: usuario.id, producto_id: prod.id });
     if (!error) {
       await supabase.from("productos").update({ likes: prod.likes + 1 }).eq("id", prod.id);
@@ -771,16 +898,11 @@ export default function App() {
     setGuardando(false);
   }
 
-  // ── Handler pago Culqi tienda (S/ 5 reactivar / S/ 10 nueva) ──────
-  // Listo para conectar: llama a abrirPagoCulqi con los datos correctos
   function pagarTienda(monto, descripcion) {
     if (!usuario) { login(); return; }
     abrirPagoCulqi({
-      monto,
-      descripcion,
-      email: usuario.email,
+      monto, descripcion, email: usuario.email,
       onSuccess: async (token) => {
-        // Aquí llamar a tu backend / edge function de Supabase con el token
         console.log("Token Culqi recibido:", token.id);
         setMsg("¡Pago procesado! Tu tienda será activada pronto.");
       },
@@ -789,12 +911,53 @@ export default function App() {
 
   const ir = (p) => { setPantalla(p); setMenuOpen(false); setMsg(""); window.scrollTo(0,0); };
   const deps = Object.keys(UBIGEO).sort();
-  const provsDisp = tiendaForm.departamento ? Object.keys(UBIGEO[tiendaForm.departamento] || {}).sort() : [];
-  const distDisp = (tiendaForm.departamento && tiendaForm.provincia) ? (UBIGEO[tiendaForm.departamento]?.[tiendaForm.provincia] || []).sort() : [];
+  const provsDisp       = tiendaForm.departamento ? Object.keys(UBIGEO[tiendaForm.departamento] || {}).sort() : [];
+  const distDisp        = (tiendaForm.departamento && tiendaForm.provincia) ? (UBIGEO[tiendaForm.departamento]?.[tiendaForm.provincia] || []).sort() : [];
   const provsPerfilDisp = perfilForm.departamento ? Object.keys(UBIGEO[perfilForm.departamento] || {}).sort() : [];
-  const distPerfilDisp = (perfilForm.departamento && perfilForm.provincia) ? (UBIGEO[perfilForm.departamento]?.[perfilForm.provincia] || []).sort() : [];
+  const distPerfilDisp  = (perfilForm.departamento && perfilForm.provincia) ? (UBIGEO[perfilForm.departamento]?.[perfilForm.provincia] || []).sort() : [];
 
-  // ── MODAL PERFIL ─────────────────────────────────────────────────
+  // ── PANTALLA DE BAN ───────────────────────────────────────────────
+  if (pantalla === "baneado" && perfilDB?.baneado) return (
+    <div className="ban-screen">
+      <style>{CSS}</style>
+      <div className="ban-card">
+        <span className="ban-icon">🚫</span>
+        <h2 className="ban-title">Cuenta suspendida</h2>
+        <p className="ban-sub">
+          Tu cuenta en TinkaMarket ha sido suspendida por el equipo de administración.
+          Puedes reactivarla pagando la multa correspondiente.
+        </p>
+        {perfilDB.ban_motivo && (
+          <div className="ban-motivo">
+            <p className="ban-motivo-label">Motivo de la suspensión</p>
+            <p className="ban-motivo-txt">{perfilDB.ban_motivo}</p>
+          </div>
+        )}
+        {perfilDB.multa_monto === 0
+          ? <div className="ban-permanente">
+              🔒 Ban permanente — esta cuenta no puede ser reactivada.
+              Si crees que es un error, escríbenos directamente.
+            </div>
+          : <div className="ban-pago">
+              <p className="ban-pago-label">Multa de reactivación</p>
+              <p className="ban-pago-monto">S/ {perfilDB.multa_monto || 10}.00</p>
+              <p className="ban-pago-sub">
+                Al pagar, tu cuenta y tus tiendas serán reactivadas inmediatamente.
+                {(perfilDB.historial_bans || 0) > 0 && (
+                  <span> La próxima multa será de S/ {Math.min((perfilDB.multa_monto || 10) * 2, 50)}.</span>
+                )}
+              </p>
+              <button className="btn-pagar-multa" onClick={pagarMulta} disabled={pagandoMulta}>
+                {pagandoMulta ? "Procesando..." : "💳 Pagar multa y reactivar cuenta"}
+              </button>
+            </div>
+        }
+        <button className="btn-logout-ban" onClick={logout}>Cerrar sesión</button>
+      </div>
+    </div>
+  );
+
+  // ── MODAL PERFIL ──────────────────────────────────────────────────
   if (mostrarPerfil && usuario) return (
     <div className="perfil-modal">
       <style>{CSS}</style>
@@ -844,9 +1007,9 @@ export default function App() {
         <div className="nav-actions">
           {usuario
             ? <button className="nav-btn" onClick={() => ir("carrito")}>🛒{carrito.length > 0 ? ` ${carrito.length}` : ""}</button>
-            : <button className="nav-btn" onClick={login}>Iniciar sesión</button>
+            : <button className="nav-btn nav-btn-primary" onClick={login}>Iniciar sesión</button>
           }
-          <button className="nav-btn" style={{ padding:"7px 12px" }} onClick={() => setMenuOpen(true)}>☰</button>
+          <button className="nav-btn" style={{ padding:"9px 12px" }} onClick={() => setMenuOpen(true)}>☰</button>
         </div>
       </nav>
 
@@ -859,11 +1022,12 @@ export default function App() {
             <span className="oro">De cada rincón </span>
             <span className="verde">a tu casa.</span>
           </h1>
-          <p className="hero-sub">El marketplace de productos peruanos auténticos</p>
+          <p className="hero-sub">Compra directo a vendedores peruanos y coordina por WhatsApp</p>
           {productos.length > 0 && (
             <div className="hero-carousel" ref={carruselRef}>
-              {productos.map(p => (
+              {productos.slice(0,8).map(p => (
                 <div key={p.id} className="hero-card">
+                  <HeroImg p={p} />
                   <p className="hero-card-name">{p.nombre}</p>
                   <p className="hero-card-price">S/ {p.precio}</p>
                   <p className="hero-card-likes">❤️ {p.likes} likes</p>
@@ -874,7 +1038,6 @@ export default function App() {
         </div>
       )}
 
-      {/* PÁGINAS */}
       <div className="page">
 
         {/* ── INICIO ── */}
@@ -897,13 +1060,17 @@ export default function App() {
             : <div className="grid grid-prod">
               {productos.map(p => (
                 <div key={p.id} className="prod-card">
-                  <div className="prod-img">📦</div>
+                  <ProdImg p={p} />
                   <div className="prod-body">
                     <p className="prod-name">{p.nombre}</p>
                     <p className="prod-price">S/ {p.precio}</p>
                     <div className="prod-foot">
                       <span className="prod-likes">❤️ {p.likes}</span>
-                      <button className="btn-like" onClick={() => darLike(p)} style={{ color: misLikes.includes(p.id) ? "var(--rojo)" : "var(--muted)", borderColor: misLikes.includes(p.id) ? "var(--rojo)" : "#eee" }} disabled={misLikes.includes(p.id)}>{misLikes.includes(p.id) ? "❤️ Likeado" : "Me gusta"}</button>
+                      <button className="btn-like" onClick={() => darLike(p)}
+                        style={{ color: misLikes.includes(p.id) ? "var(--rojo)" : "var(--muted)", borderColor: misLikes.includes(p.id) ? "var(--rojo)" : "#eee" }}
+                        disabled={misLikes.includes(p.id)}>
+                        {misLikes.includes(p.id) ? "❤️ Likeado" : "Me gusta"}
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -945,13 +1112,17 @@ export default function App() {
               : <div className="grid grid-prod">
                 {productos.map(p => (
                   <div key={p.id} className="prod-card">
-                    <div className="prod-img">📦</div>
+                    <ProdImg p={p} />
                     <div className="prod-body">
                       <p className="prod-name">{p.nombre}</p>
                       <p className="prod-price">S/ {p.precio}</p>
                       <div className="prod-foot">
                         <span className="prod-likes">❤️ {p.likes}</span>
-                        <button className="btn-like" onClick={() => darLike(p)} style={{ color: misLikes.includes(p.id) ? "var(--rojo)" : "var(--muted)", borderColor: misLikes.includes(p.id) ? "var(--rojo)" : "#eee" }} disabled={misLikes.includes(p.id)}>{misLikes.includes(p.id) ? "❤️ Likeado" : "Me gusta"}</button>
+                        <button className="btn-like" onClick={() => darLike(p)}
+                          style={{ color: misLikes.includes(p.id) ? "var(--rojo)" : "var(--muted)", borderColor: misLikes.includes(p.id) ? "var(--rojo)" : "#eee" }}
+                          disabled={misLikes.includes(p.id)}>
+                          {misLikes.includes(p.id) ? "❤️ Likeado" : "Me gusta"}
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -993,7 +1164,7 @@ export default function App() {
               : <div className="grid grid-prod">
                 {prodsTienda.map(p => (
                   <div key={p.id} className="prod-card">
-                    <div className="prod-img">📦</div>
+                    <ProdImg p={p} />
                     <div className="prod-body">
                       <p className="prod-name">{p.nombre}</p>
                       <p className="prod-price">S/ {p.precio}</p>
@@ -1027,7 +1198,7 @@ export default function App() {
               {productos.length > 0 && <div className="grid grid-prod">
                 {productos.map(p => (
                   <div key={p.id} className="prod-card">
-                    <div className="prod-img">📦</div>
+                    <ProdImg p={p} />
                     <div className="prod-body">
                       <p className="prod-name">{p.nombre}</p>
                       <p className="prod-price">S/ {p.precio}</p>
@@ -1125,14 +1296,6 @@ export default function App() {
               ? <div className="form-card">
                 <p className="form-title">Crea tu tienda 🏪</p>
                 <p className="form-sub">300 días activa · 5 productos gratis · S/ 1 por producto extra</p>
-
-                {/* CULQI - Pago crear tienda (S/5) - listo para activar */}
-                {/* <div className="pago-section">
-                  <p className="pago-title">Activación de tienda</p>
-                  <p className="pago-price">S/ 5.00</p>
-                  <button className="btn-primary" onClick={() => pagarTienda(5, "Activación de tienda TinkaMarket - 300 días")}>Pagar con Yape / Tarjeta</button>
-                </div> */}
-
                 <div className="upload-area" onClick={() => document.getElementById("fotoTienda").click()}>
                   {tiendaFotoPreview
                     ? <img src={tiendaFotoPreview} alt="preview" style={{ maxHeight:120, borderRadius:10, maxWidth:"100%" }} />
@@ -1143,7 +1306,6 @@ export default function App() {
                     if (f) { setTiendaFoto(f); setTiendaFotoPreview(URL.createObjectURL(f)); }
                   }} />
                 </div>
-
                 <input className="inp" placeholder="Nombre de la tienda o marca *" value={tiendaForm.nombre} onChange={e => setTiendaForm({...tiendaForm, nombre:e.target.value})} />
                 <input className="inp" placeholder="WhatsApp (solo números, sin +51) *" value={tiendaForm.whatsapp} onChange={e => setTiendaForm({...tiendaForm, whatsapp:e.target.value})} />
                 <select className="inp" value={tiendaForm.departamento} onChange={e => setTiendaForm({...tiendaForm, departamento:e.target.value, provincia:"", distrito:""})}>
@@ -1178,13 +1340,6 @@ export default function App() {
                     </div>
                   </div>
                 </div>
-
-                {/* CULQI - Pago producto extra (S/1) - listo para activar */}
-                {/* <div className="pago-section">
-                  <p className="pago-title">Publicar producto extra</p>
-                  <p className="pago-price">S/ 1.00</p>
-                  <button className="btn-primary" onClick={() => pagarTienda(1, "Publicación de producto extra - TinkaMarket")}>Pagar con Yape / Tarjeta</button>
-                </div> */}
 
                 <p className="sec-title">Publicar producto</p>
                 <div className="form-card" style={{ margin:"0 0 24px" }}>
@@ -1255,9 +1410,10 @@ export default function App() {
               ["🏪 Tiendas","Cada tienda dura 300 días. Al vencer, tienes 10 días para pagar S/ 5 y reactivarla. Si no, se elimina. Para reactivarla pagas S/ 10. Registrar la misma tienda eliminada se detecta como infracción."],
               ["📦 Productos","Cada publicación dura 30 días. Al vencer tienes 2 días para republicar. Tienes 5 productos gratis; cada extra cuesta S/ 1 (máximo 100). Solo puedes cambiar el precio una vez al día."],
               ["💳 Pagos","Los pagos de activación se realizan por Yape o tarjeta via Culqi. El beneficio se activa inmediatamente. TinkaMarket no procesa pagos entre compradores y vendedores."],
+              ["⚖️ Multas por infracción","Las cuentas suspendidas pueden reactivarse pagando una multa. Primera infracción: S/ 10. Segunda: S/ 20. Grave o reincidente: S/ 50. Los bans permanentes no tienen opción de pago."],
               ["🔒 Privacidad y seguridad","El número de WhatsApp del vendedor solo se revela cuando el comprador decide contactar. Cada contacto queda registrado con el ID del comprador para seguridad de ambas partes."],
               ["⚖️ Responsabilidad","TinkaMarket conecta compradores y vendedores, pero no se hace responsable de la calidad, entrega o pago de las transacciones."],
-              ["🚷 Cuentas baneadas","Las cuentas que infrinjan estas políticas serán baneadas y añadidas a la lista negra permanente."],
+              ["🚷 Cuentas baneadas","Las cuentas que infrinjan estas políticas serán baneadas. Si no pagan la multa dentro de 30 días, el ban se vuelve permanente."],
             ].map(([t,txt]) => (
               <div key={t} className="pol-item">
                 <p className="pol-title">{t}</p>
