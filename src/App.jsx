@@ -43,7 +43,7 @@ const CSS = `
   /* ── NAVBAR ── */
   .nav {
     width: 100%;
-    background: var(--white);
+    background: var(--grad);
     display: flex;
     align-items: center;
     height: 64px;
@@ -52,63 +52,62 @@ const CSS = `
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid #EFE6D8;
-    box-shadow: 0 2px 14px rgba(60,20,0,0.05);
+    box-shadow: 0 2px 20px rgba(120,18,8,0.35);
   }
   .nav-logo {
     display: flex; align-items: center; gap: 10px;
     cursor: pointer; flex-shrink: 0; text-decoration: none;
   }
   .nav-logo-img {
-    height: 38px; width: 38px;
+    height: 40px; width: 40px;
     object-fit: contain; border-radius: 10px;
-    background: var(--grad);
+    background: rgba(255,255,255,0.18);
+    border: 1.5px solid rgba(255,255,255,0.35);
     padding: 4px;
     transition: transform 0.2s;
   }
   .nav-logo-img:hover { transform: scale(1.08); }
-  .nav-brand { font-family: var(--font-head); color: var(--cafe); font-weight: 900; font-size: 19px; letter-spacing: -0.3px; }
+  .nav-brand { font-family: var(--font-head); color: white; font-weight: 900; font-size: 19px; letter-spacing: -0.3px; }
 
   .search-wrap {
     flex: 1; display: flex;
-    background: var(--gris);
-    border: 1.5px solid #EFE6D8;
+    background: rgba(255,255,255,0.18);
+    border: 1.5px solid rgba(255,255,255,0.35);
     border-radius: 50px;
     overflow: hidden;
     height: 42px;
     transition: background 0.2s, border 0.2s;
+    backdrop-filter: blur(4px);
   }
   .search-wrap:focus-within {
-    background: var(--white);
-    border-color: var(--rojo);
+    background: rgba(255,255,255,0.28);
+    border-color: rgba(255,255,255,0.6);
   }
   .search-inp {
     flex: 1; padding: 0 18px;
     background: transparent; border: none; outline: none;
-    font-size: 14px; color: var(--text);
+    font-size: 14px; color: white;
     font-family: var(--font-body);
   }
-  .search-inp::placeholder { color: var(--muted); }
+  .search-inp::placeholder { color: rgba(255,255,255,0.65); }
   .search-btn {
-    background: transparent; border: none;
+    background: rgba(255,255,255,0.2); border: none;
     padding: 0 18px; cursor: pointer; font-size: 16px;
-    color: var(--rojo); transition: background 0.2s;
+    color: white; transition: background 0.2s;
+    border-left: 1px solid rgba(255,255,255,0.2);
   }
-  .search-btn:hover { background: #fff0ee; }
+  .search-btn:hover { background: rgba(255,255,255,0.32); }
 
-  .nav-actions { display: flex; gap: 8px; flex-shrink: 0; align-items: center; }
+  .nav-actions { display: flex; gap: 8px; flex-shrink: 0; }
   .nav-btn {
-    background: var(--gris);
-    border: 1.5px solid #EFE6D8;
-    color: var(--cafe); padding: 9px 16px; border-radius: 50px;
+    background: rgba(255,255,255,0.18);
+    border: 1.5px solid rgba(255,255,255,0.35);
+    color: white; padding: 7px 16px; border-radius: 50px;
     cursor: pointer; font-size: 13px; font-weight: 700;
     white-space: nowrap; font-family: var(--font-body);
-    transition: all 0.18s;
-    display: flex; align-items: center; justify-content: center;
+    transition: background 0.18s, transform 0.15s;
   }
-  .nav-btn:hover { border-color: var(--rojo); color: var(--rojo); background: #fff0ee; transform: translateY(-1px); }
-  .nav-btn-primary { background: var(--grad); border: none; color: white; box-shadow: 0 3px 10px rgba(192,57,43,0.28); }
-  .nav-btn-primary:hover { color: white; border-color: transparent; opacity: 0.92; }
+  .nav-btn:hover { background: rgba(255,255,255,0.32); transform: translateY(-1px); }
 
   /* ── HERO ── */
   .hero {
@@ -141,7 +140,7 @@ const CSS = `
   .hero-title .oro { color: var(--oro2); }
   .hero-title .verde { color: #7ECBA1; }
   .hero-sub {
-    color: rgba(255,255,255,0.85); font-size: 15px; margin-bottom: 28px;
+    color: rgba(255,255,255,0.8); font-size: 15px; margin-bottom: 28px;
   }
 
   /* Carrusel hero */
@@ -153,26 +152,24 @@ const CSS = `
   .hero-carousel::-webkit-scrollbar { display: none; }
   .hero-card {
     min-width: 160px; flex-shrink: 0;
-    background: rgba(255,255,255,0.95);
-    border: 1px solid rgba(255,255,255,0.5);
-    border-radius: 14px; padding: 12px;
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 14px; padding: 16px;
     scroll-snap-align: start; text-align: left;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    backdrop-filter: blur(6px);
     transition: transform 0.2s;
+    overflow: hidden;
   }
   .hero-card:hover { transform: translateY(-3px); }
   .hero-card-img {
-    width: 100%; height: 88px; border-radius: 10px;
-    object-fit: cover; margin-bottom: 10px; display: block;
-    background: var(--gris);
+    width: 100%; height: 90px;
+    border-radius: 8px; object-fit: cover;
+    margin-bottom: 10px;
+    background: rgba(255,255,255,0.1);
   }
-  .hero-card-img-empty {
-    display: flex; align-items: center; justify-content: center;
-    font-size: 28px;
-  }
-  .hero-card-name { color: var(--text); font-weight: 700; font-size: 13px; margin-bottom: 4px; }
-  .hero-card-price { color: var(--rojo); font-weight: 900; font-size: 17px; margin-bottom: 4px; font-family: var(--font-head); }
-  .hero-card-likes { color: var(--muted); font-size: 12px; }
+  .hero-card-name { color: white; font-weight: 700; font-size: 13px; margin-bottom: 4px; }
+  .hero-card-price { color: var(--oro2); font-weight: 900; font-size: 17px; margin-bottom: 4px; }
+  .hero-card-likes { color: rgba(255,255,255,0.65); font-size: 12px; }
 
   /* ── WRAP / PAGE ── */
   .page { width: 100%; max-width: 1200px; margin: 0 auto; padding: 32px 20px 60px; }
@@ -223,12 +220,14 @@ const CSS = `
     display: flex; align-items: center; justify-content: center;
     font-size: 42px; position: relative; overflow: hidden;
   }
+  .prod-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    position: absolute; inset: 0;
+  }
   .prod-img::after {
     content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-    height: 40px; background: linear-gradient(transparent, rgba(0,0,0,0.04));
-  }
-  .prod-img-photo {
-    height: 148px; width: 100%; object-fit: cover; display: block; background: var(--gris);
+    height: 40px; background: linear-gradient(transparent, rgba(0,0,0,0.06));
+    pointer-events: none;
   }
   .prod-body { padding: 14px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
   .prod-name { font-weight: 700; font-size: 13px; line-height: 1.4; color: var(--text); }
@@ -389,6 +388,120 @@ const CSS = `
     display: flex; align-items: center; justify-content: center; padding: 20px;
   }
 
+  /* ── FIX 1: Avatar de persona (sin foto de perfil de Google) ── */
+  .user-avatar-wrap {
+    width: 88px; height: 88px;
+    border-radius: 50%;
+    background: var(--grad);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 14px;
+    box-shadow: 0 6px 24px rgba(192,57,43,0.35);
+    border: 3px solid rgba(255,255,255,0.5);
+    overflow: hidden;
+    position: relative;
+  }
+  .user-avatar-svg {
+    width: 52px; height: 52px;
+    fill: rgba(255,255,255,0.9);
+  }
+
+  /* ── FIX 4: Perfil de tienda estilo TikTok ── */
+  .tienda-profile-hero {
+    width: 100%;
+    background: var(--grad);
+    padding: 32px 20px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0;
+    border-radius: 0 0 28px 28px;
+  }
+  .tienda-profile-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .tienda-profile-avatar {
+    width: 96px; height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255,255,255,0.8);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+    margin: 0 auto 14px;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+  .tienda-profile-avatar-letter {
+    width: 96px; height: 96px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    border: 4px solid rgba(255,255,255,0.7);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 900; font-size: 40px;
+    font-family: var(--font-head);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+    margin: 0 auto 14px;
+    position: relative;
+    z-index: 1;
+  }
+  .tienda-profile-name {
+    color: white; font-family: var(--font-head);
+    font-weight: 900; font-size: 22px; margin-bottom: 6px;
+    position: relative; z-index: 1;
+  }
+  .tienda-profile-loc {
+    color: rgba(255,255,255,0.8); font-size: 13px;
+    margin-bottom: 4px; position: relative; z-index: 1;
+  }
+  .tienda-profile-desc {
+    color: rgba(255,255,255,0.75); font-size: 13px;
+    max-width: 420px; margin: 8px auto 0;
+    line-height: 1.55; position: relative; z-index: 1;
+  }
+  .tienda-profile-stats {
+    display: flex; justify-content: center; gap: 32px;
+    margin: 18px 0 0; position: relative; z-index: 1;
+  }
+  .tienda-profile-stat { text-align: center; }
+  .tienda-profile-stat-val {
+    color: white; font-family: var(--font-head);
+    font-weight: 900; font-size: 22px; line-height: 1;
+    margin-bottom: 3px;
+  }
+  .tienda-profile-stat-lbl {
+    color: rgba(255,255,255,0.7); font-size: 11px;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .tienda-profile-actions {
+    display: flex; gap: 10px; justify-content: center;
+    margin-top: 18px; position: relative; z-index: 1;
+  }
+  .btn-wa-pill {
+    background: #25D366; color: white;
+    border: none; border-radius: 50px;
+    padding: 10px 22px; font-size: 14px; font-weight: 800;
+    cursor: pointer; font-family: var(--font-body);
+    box-shadow: 0 3px 12px rgba(37,211,102,0.4);
+    transition: opacity 0.18s, transform 0.15s;
+    display: flex; align-items: center; gap: 7px;
+  }
+  .btn-wa-pill:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  /* ── FIX 5: Días reales activos ── */
+  .dias-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-size: 12px; color: rgba(255,255,255,0.9);
+    font-weight: 700; margin-top: 8px;
+    position: relative; z-index: 1;
+  }
+  .dias-badge.venciendo { background: rgba(255,180,0,0.25); border-color: rgba(255,180,0,0.5); color: #FFE066; }
+  .dias-badge.vencido { background: rgba(255,60,60,0.25); border-color: rgba(255,60,60,0.5); color: #FF9999; }
+
   /* ── TIENDA DETALLE ── */
   .tienda-info-card {
     background: white; border-radius: var(--radius); padding: 24px;
@@ -436,7 +549,7 @@ const CSS = `
     box-shadow: 0 4px 18px rgba(192,57,43,0.35);
   }
 
-  /* ── STEPS ── */
+  /* ── STEPS (cómo vender) ── */
   .step-row { display: flex; gap: 18px; margin-bottom: 26px; }
   .step-num {
     width: 42px; height: 42px; border-radius: 14px;
@@ -468,7 +581,7 @@ const CSS = `
   .modal-title { font-family: var(--font-head); font-size: 18px; font-weight: 800; margin-bottom: 10px; }
   .modal-sub { font-size: 14px; color: var(--muted); margin-bottom: 24px; line-height: 1.6; }
 
-  /* ── PAGO / CULQI ── */
+  /* ── PAGO / CULQI PLACEHOLDER ── */
   .pago-section { background: linear-gradient(135deg, #FDF6EC, #FFF8F0); border-radius: var(--radius); padding: 24px; border: 2px dashed #E8D0A0; margin-bottom: 24px; }
   .pago-title { font-family: var(--font-head); font-weight: 800; font-size: 16px; color: var(--cafe); margin-bottom: 6px; }
   .pago-price { font-family: var(--font-head); font-weight: 900; font-size: 28px; color: var(--rojo); }
@@ -482,60 +595,346 @@ const CSS = `
   }
   .upload-area:hover { border-color: var(--rojo); background: #fff7f5; }
 
-  /* ── PANTALLA DE BAN ── */
-  .ban-screen {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #2A0505 0%, #1C0A00 60%);
-    display: flex; align-items: center; justify-content: center; padding: 20px;
+  /* ── STATS GRID ── */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
   }
-  .ban-card {
-    background: #1A0808;
-    border: 1px solid rgba(239,68,68,0.3);
-    border-radius: 24px; padding: 40px 36px;
-    max-width: 440px; width: 100%; text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  .stat-card {
+    background: var(--gris);
+    border-radius: 14px;
+    padding: 14px 12px;
+    text-align: center;
   }
-  .ban-icon { font-size: 64px; margin-bottom: 20px; display: block; }
-  .ban-title { font-family: var(--font-head); font-size: 26px; font-weight: 900; color: #EF4444; margin-bottom: 10px; }
-  .ban-sub { color: #9CA3AF; font-size: 14px; line-height: 1.7; margin-bottom: 28px; }
-  .ban-motivo {
-    background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25);
-    border-radius: 12px; padding: 14px 18px; margin-bottom: 24px; text-align: left;
+  .stat-val {
+    font-family: var(--font-head);
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--rojo);
+    line-height: 1;
+    margin-bottom: 4px;
   }
-  .ban-motivo-label { font-size: 11px; color: #6B7280; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
-  .ban-motivo-txt { font-size: 14px; color: #F9FAFB; line-height: 1.6; }
-  .ban-pago {
-    background: linear-gradient(135deg, #1F1209, #2A1A08);
-    border: 1px solid rgba(212,160,23,0.3);
-    border-radius: 16px; padding: 22px; margin-bottom: 20px;
+  .stat-lbl {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
-  .ban-pago-label { font-size: 12px; color: #9CA3AF; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
-  .ban-pago-monto { font-family: var(--font-head); font-size: 40px; font-weight: 900; color: #D4A017; margin-bottom: 6px; }
-  .ban-pago-sub { font-size: 12px; color: #9CA3AF; margin-bottom: 16px; }
-  .btn-pagar-multa {
-    display: block; width: 100%; padding: 14px;
-    background: linear-gradient(135deg, #854F0B, #D4A017);
-    color: white; border: none; border-radius: 50px; font-size: 15px;
-    font-weight: 800; cursor: pointer; font-family: var(--font-body);
-    box-shadow: 0 4px 16px rgba(212,160,23,0.3);
+
+  /* ── TOKENS BADGE ── */
+  .tokens-bar {
+    background: var(--gris);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .tokens-left { flex: 1; }
+  .tokens-title { font-weight: 800; font-size: 13px; color: var(--cafe); margin-bottom: 4px; }
+  .tokens-track {
+    height: 8px;
+    background: #E0D8D0;
+    border-radius: 99px;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
+  .tokens-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: var(--grad);
+    transition: width 0.5s ease;
+  }
+  .tokens-sub { font-size: 11px; color: var(--muted); }
+  .btn-comprar-tokens {
+    background: var(--grad);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: var(--font-body);
+    transition: opacity 0.18s;
+    flex-shrink: 0;
+  }
+  .btn-comprar-tokens:hover { opacity: 0.88; }
+
+  /* ── TOGGLE PUBLICAR ── */
+  .btn-toggle-form {
+    width: 100%;
+    background: var(--grad);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 16px 20px;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: var(--font-body);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 16px rgba(192,57,43,0.25);
     transition: opacity 0.18s, transform 0.15s;
+  }
+  .btn-toggle-form:hover { opacity: 0.92; transform: translateY(-1px); }
+  .btn-toggle-arrow {
+    font-size: 20px;
+    transition: transform 0.25s ease;
+  }
+  .btn-toggle-arrow.open { transform: rotate(180deg); }
+
+  /* ── FORM SLIDE ── */
+  .form-slide {
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.3s ease;
+    max-height: 0;
+    opacity: 0;
+  }
+  .form-slide.visible {
+    max-height: 1400px;
+    opacity: 1;
+  }
+
+  /* ── PROD ITEM (publicados en mi tienda) ── */
+  .prod-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #F0EAE0;
+    align-items: center;
+  }
+  .prod-item:last-child { border-bottom: none; }
+  .prod-item-img {
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    background: var(--gris);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .prod-item-img img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .prod-item-info { flex: 1; min-width: 0; }
+  .prod-item-name {
+    font-weight: 700;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 2px;
+  }
+  .prod-item-meta { font-size: 12px; color: var(--muted); }
+  .prod-item-price {
+    font-family: var(--font-head);
+    font-weight: 900;
+    font-size: 16px;
+    color: var(--rojo);
+    flex-shrink: 0;
+  }
+
+  /* ── GALERÍA DE FOTOS DE PRODUCTO ── */
+  .prod-gallery {
+    display: flex; gap: 6px; overflow-x: auto;
+    padding-bottom: 4px; scrollbar-width: none;
     margin-bottom: 10px;
   }
-  .btn-pagar-multa:hover { opacity: 0.9; transform: translateY(-2px); }
-  .btn-pagar-multa:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
-  .btn-logout-ban {
-    display: block; width: 100%; padding: 12px;
-    background: transparent; border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 50px; color: #6B7280; font-size: 14px;
-    font-weight: 700; cursor: pointer; font-family: var(--font-body);
-    transition: all 0.18s;
+  .prod-gallery::-webkit-scrollbar { display: none; }
+  .prod-gallery-thumb {
+    width: 56px; height: 56px; border-radius: 8px;
+    object-fit: cover; flex-shrink: 0; cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.15s;
   }
-  .btn-logout-ban:hover { border-color: rgba(255,255,255,0.3); color: #9CA3AF; }
-  .ban-permanente {
-    background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3);
-    border-radius: 12px; padding: 16px; color: #EF4444;
-    font-size: 14px; font-weight: 700; margin-bottom: 20px;
+  .prod-gallery-thumb.active { border-color: var(--rojo); }
+
+  /* ── ALERTA DIAS ── */
+  .alerta-dias {
+    background: linear-gradient(135deg, #FFF3CD, #FFE69C);
+    border: 2px solid #FFB800;
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
+  .alerta-dias-icon { font-size: 24px; flex-shrink: 0; }
+  .alerta-dias-txt { font-size: 13px; color: #7A5A00; font-weight: 700; }
+
+  /* ── DASHBOARD MI TIENDA (layout imagen referencia) ── */
+  .tienda-dash {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 700px) {
+    .tienda-dash { grid-template-columns: 1fr; }
+  }
+  .tienda-dash-left {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  /* Avatar centrado en card */
+  .tienda-dash-avatar-card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px 16px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .tienda-dash-avatar {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--rojo);
+    box-shadow: 0 4px 14px rgba(192,57,43,0.25);
+  }
+  .tienda-dash-avatar-letter {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: var(--grad);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 900; font-size: 36px;
+    font-family: var(--font-head);
+    border: 3px solid rgba(192,57,43,0.3);
+    box-shadow: 0 4px 14px rgba(192,57,43,0.25);
+  }
+  .tienda-dash-name {
+    font-family: var(--font-head);
+    font-weight: 900; font-size: 16px;
+    color: var(--cafe); margin: 0;
+  }
+  .tienda-dash-handle {
+    font-size: 13px; color: var(--rojo); font-weight: 700;
+  }
+  .tienda-dash-loc {
+    font-size: 12px; color: var(--muted);
+  }
+  .tienda-dash-wa {
+    font-size: 12px; color: var(--muted);
+    display: flex; align-items: center; gap: 4px; justify-content: center;
+  }
+  /* Stats verticales */
+  .tienda-dash-stats {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .tienda-dash-stat {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #F0EAE0;
+  }
+  .tienda-dash-stat:last-child { border-bottom: none; }
+  .tienda-dash-stat-lbl {
+    font-size: 11px; color: var(--muted);
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .tienda-dash-stat-val {
+    font-family: var(--font-head);
+    font-size: 22px; font-weight: 900; color: var(--rojo);
+  }
+  /* Salud de la tienda */
+  .tienda-dash-salud {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 16px;
+  }
+  .tienda-dash-salud-title {
+    font-family: var(--font-head);
+    font-weight: 800; font-size: 13px;
+    color: var(--cafe); margin-bottom: 14px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  /* Grid de productos en Mi Tienda */
+  .tienda-dash-right {
+    display: flex;
+    flex-direction: column;
+  }
+  .tienda-dash-prods-title {
+    font-family: var(--font-head);
+    font-weight: 800; font-size: 14px;
+    color: var(--cafe);
+    text-transform: uppercase; letter-spacing: 0.5px;
+    margin-bottom: 12px;
+  }
+  .tienda-dash-prods-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+    flex: 1;
+  }
+  .tienda-dash-prod-card {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .tienda-dash-prod-img {
+    width: 100%; height: 110px;
+    object-fit: cover;
+    display: block;
+    background: var(--gris);
+  }
+  .tienda-dash-prod-img-placeholder {
+    width: 100%; height: 110px;
+    background: var(--gris);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 32px;
+  }
+  .tienda-dash-prod-body {
+    padding: 10px 10px 12px;
+  }
+  .tienda-dash-prod-name {
+    font-weight: 700; font-size: 12px;
+    color: var(--text); margin-bottom: 2px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .tienda-dash-prod-meta {
+    font-size: 11px; color: var(--muted); margin-bottom: 4px;
+  }
+  .tienda-dash-prod-price-row {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .tienda-dash-prod-price {
+    font-family: var(--font-head);
+    font-weight: 900; font-size: 16px; color: var(--rojo);
+  }
+  /* Badge días producto */
+  .prod-dias-badge {
+    font-size: 10px; font-weight: 800;
+    padding: 2px 7px; border-radius: 100px;
+    white-space: nowrap;
+  }
+  .prod-dias-activo { background: #E8F5EE; color: #1A7A4A; }
+  .prod-dias-gracia { background: #FFF3CD; color: #D4700A; }
+  .prod-dias-vencido { background: #FFECEC; color: #CC0000; }
 
   @media (max-width: 600px) {
     .nav { padding: 0 12px; gap: 10px; }
@@ -554,21 +953,6 @@ const CATS_INFO = [
   { nombre:"Artesanales",     desc:"Textiles, cerámica y arte",     bg:"linear-gradient(135deg,#8B4513,#5C2D0A)", icon:"🎨" },
   { nombre:"Otros",           desc:"Variedad de productos locales", bg:"linear-gradient(135deg,#6B3FA0,#4A2070)", icon:"✨" },
 ];
-
-// ─── Helpers de imagen ────────────────────────────────────────────────
-function catIconDe(categoria) {
-  return CATS_INFO.find(c => c.nombre === categoria)?.icon || "📦";
-}
-function ProdImg({ p }) {
-  return p.fotos && p.fotos[0]
-    ? <img src={p.fotos[0]} alt={p.nombre} className="prod-img-photo" />
-    : <div className="prod-img">{catIconDe(p.categoria)}</div>;
-}
-function HeroImg({ p }) {
-  return p.fotos && p.fotos[0]
-    ? <img src={p.fotos[0]} alt={p.nombre} className="hero-card-img" />
-    : <div className="hero-card-img hero-card-img-empty">{catIconDe(p.categoria)}</div>;
-}
 
 const UBIGEO = {
   "Amazonas":{"Chachapoyas":["Chachapoyas","Asunción","Balsas","Cheto","Chiliquín","Chuquibamba","Granada","Huancas","La Jalca","Leimebamba","Levanto","Magdalena","Mariscal Castilla","Molinopampa","Montevideo","Olleros","Quinjalca","San Francisco de Daguas","San Isidro de Maino","Soloco","Sonche"],"Bagua":["Bagua","La Peca","Aramango","Copallin","El Parco","Imaza","Copallín"],"Bongará":["Jumbilla","Chisquilla","Churuja","Corosha","Cuispes","Florida","Jazán","Recta","San Carlos","Shipasbamba","Valera","Yambrasbamba"],"Utcubamba":["Bagua Grande","Cajaruro","Cumba","El Milagro","Jamalca","Lonya Grande","Yamón"]},
@@ -596,13 +980,75 @@ const UBIGEO = {
   "Ucayali":{"Coronel Portillo":["Callería","Campoverde","Iparia","Masisea","Yarinacocha","Nueva Requena","Manantay"],"Padre Abad":["Padre Abad","Irazola","Curimaná","Neshuya","Alexander Von Humboldt"],"Atalaya":["Raymondi","Sepahua","Tahuania","Yurúa"],"Purús":["Purús"]},
 };
 
-// ─── Culqi ───────────────────────────────────────────────────────────
+// ─── FIX 5: Calcular días activos reales ─────────────────────────────
+function calcularDiasActivos(tienda) {
+  if (!tienda?.created_at) return { dias: 0, estado: "activa", diasRestantes: 300 };
+  const creacion = new Date(tienda.created_at);
+  const ahora = new Date();
+  const diffMs = ahora - creacion;
+  const diasTranscurridos = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  const LIMITE = 300;
+  const GRACIA = 10;
+
+  if (diasTranscurridos < LIMITE) {
+    return { dias: diasTranscurridos, estado: "activa", diasRestantes: LIMITE - diasTranscurridos };
+  } else if (diasTranscurridos < LIMITE + GRACIA) {
+    const diasGracia = diasTranscurridos - LIMITE;
+    return { dias: diasTranscurridos, estado: "gracia", diasRestantes: GRACIA - diasGracia, diasGracia };
+  } else {
+    return { dias: diasTranscurridos, estado: "vencida", diasRestantes: 0 };
+  }
+}
+
+// ─── Calcular días activos de un PRODUCTO (1–30, luego gracia 2 días) ──
+function calcularDiasProducto(prod) {
+  const LIMITE = 30;
+  const GRACIA = 2;
+
+  if (!prod.created_at) return { diaActual: 1, estado: "activo", diasRestantes: LIMITE };
+
+  const creacion = new Date(prod.created_at);
+  const ahora = new Date();
+  const diasTranscurridos = Math.floor((ahora - creacion) / (1000 * 60 * 60 * 24));
+  const diaActual = Math.min(diasTranscurridos + 1, LIMITE + GRACIA); // Día 1, 2, 3... (nunca 0)
+
+  if (diasTranscurridos < LIMITE) {
+    return { diaActual, estado: "activo", diasRestantes: LIMITE - diasTranscurridos };
+  } else if (diasTranscurridos < LIMITE + GRACIA) {
+    return { diaActual, estado: "gracia", diasRestantes: (LIMITE + GRACIA) - diasTranscurridos };
+  } else {
+    return { diaActual, estado: "vencido", diasRestantes: 0 };
+  }
+}
+
+// ─── FIX 1: Avatar SVG de persona (estilo WhatsApp) ──────────────────
+function PersonAvatar({ size = 88, style = {} }) {
+  return (
+    <div style={{
+      width: size, height: size,
+      borderRadius: "50%",
+      background: "linear-gradient(135deg, #7B1208 0%, #C0392B 40%, #E8651A 75%, #D4A017 100%)",
+      display: "flex", alignItems: "center", justifyContent: "center",
+      boxShadow: "0 6px 24px rgba(192,57,43,0.35)",
+      border: "3px solid rgba(255,255,255,0.5)",
+      flexShrink: 0,
+      ...style
+    }}>
+      <svg viewBox="0 0 100 100" style={{ width: size * 0.58, height: size * 0.58 }} fill="rgba(255,255,255,0.92)">
+        <circle cx="50" cy="35" r="22" />
+        <path d="M10 85 Q10 62 50 62 Q90 62 90 85 Z" />
+      </svg>
+    </div>
+  );
+}
+
+// ─── Culqi helpers ────────────────────────────────────────────────────
 function abrirPagoCulqi({ monto, descripcion, email, onSuccess }) {
   if (typeof window.Culqi === "undefined") {
     alert("Culqi no está disponible en este momento. Por favor intente más tarde.");
     return;
   }
-  window.Culqi.publicKey = "YOUR_CULQI_PUBLIC_KEY"; // ← reemplazar
+  window.Culqi.publicKey = "YOUR_CULQI_PUBLIC_KEY";
   window.Culqi.settings({
     title: "TinkaMarket 🇵🇪",
     currency: "PEN",
@@ -620,34 +1066,153 @@ function abrirPagoCulqi({ monto, descripcion, email, onSuccess }) {
   };
 }
 
+// ─── FIX 5: Sonidos mejorados con botón atrás sonoro ─────────────────
+function playSound(type) {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    if (type === "click") {
+      osc.frequency.setValueAtTime(600, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(400, ctx.currentTime + 0.1);
+      gain.gain.setValueAtTime(0.18, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+      osc.start(); osc.stop(ctx.currentTime + 0.15);
+    } else if (type === "back") {
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(520, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(320, ctx.currentTime + 0.14);
+      gain.gain.setValueAtTime(0.22, ctx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.14, ctx.currentTime + 0.07);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+      osc.start(); osc.stop(ctx.currentTime + 0.2);
+      setTimeout(() => {
+        try {
+          const ctx2 = new (window.AudioContext || window.webkitAudioContext)();
+          const o2 = ctx2.createOscillator();
+          const g2 = ctx2.createGain();
+          o2.connect(g2); g2.connect(ctx2.destination);
+          o2.type = "sine";
+          o2.frequency.value = 260;
+          g2.gain.setValueAtTime(0.16, ctx2.currentTime);
+          g2.gain.exponentialRampToValueAtTime(0.001, ctx2.currentTime + 0.18);
+          o2.start(); o2.stop(ctx2.currentTime + 0.18);
+        } catch(e) {}
+      }, 90);
+    } else if (type === "success") {
+      [523.25, 659.25, 783.99].forEach((freq, i) => {
+        const o2 = ctx.createOscillator();
+        const g2 = ctx.createGain();
+        o2.connect(g2); g2.connect(ctx.destination);
+        o2.frequency.value = freq;
+        g2.gain.setValueAtTime(0, ctx.currentTime + i * 0.12);
+        g2.gain.linearRampToValueAtTime(0.15, ctx.currentTime + i * 0.12 + 0.05);
+        g2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.12 + 0.2);
+        o2.start(ctx.currentTime + i * 0.12);
+        o2.stop(ctx.currentTime + i * 0.12 + 0.25);
+      });
+    } else if (type === "error") {
+      osc.frequency.setValueAtTime(200, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.25);
+      gain.gain.setValueAtTime(0.2, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.28);
+      osc.start(); osc.stop(ctx.currentTime + 0.28);
+    } else if (type === "like") {
+      [880, 1108.73].forEach((freq, i) => {
+        const o2 = ctx.createOscillator();
+        const g2 = ctx.createGain();
+        o2.connect(g2); g2.connect(ctx.destination);
+        o2.type = "sine"; o2.frequency.value = freq;
+        g2.gain.setValueAtTime(0, ctx.currentTime + i * 0.08);
+        g2.gain.linearRampToValueAtTime(0.12, ctx.currentTime + i * 0.08 + 0.04);
+        g2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.08 + 0.18);
+        o2.start(ctx.currentTime + i * 0.08);
+        o2.stop(ctx.currentTime + i * 0.08 + 0.2);
+      });
+    } else if (type === "open") {
+      osc.frequency.setValueAtTime(300, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(600, ctx.currentTime + 0.12);
+      gain.gain.setValueAtTime(0.12, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.18);
+      osc.start(); osc.stop(ctx.currentTime + 0.18);
+    } else if (type === "close") {
+      osc.frequency.setValueAtTime(500, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(250, ctx.currentTime + 0.1);
+      gain.gain.setValueAtTime(0.1, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.14);
+      osc.start(); osc.stop(ctx.currentTime + 0.14);
+    }
+  } catch (e) {
+    // Audio no disponible en este entorno, ignorar
+  }
+}
+
+// ─── Sub-componente: imagen de producto con galería (con fallback robusto) ──
+function ProdImgViewer({ fotos, fallbackIcon = "📦" }) {
+  const [idx, setIdx] = useState(0);
+  const [error, setError] = useState(false);
+
+  if (!fotos || fotos.length === 0 || error) {
+    return (
+      <div className="prod-img">
+        <span>{fallbackIcon}</span>
+      </div>
+    );
+  }
+  return (
+    <div style={{ display:"flex", flexDirection:"column" }}>
+      <div className="prod-img">
+        <img src={fotos[idx]} alt="producto" onError={() => setError(true)} />
+      </div>
+      {fotos.length > 1 && (
+        <div className="prod-gallery" style={{ padding:"6px 10px 0" }}>
+          {fotos.map((f, i) => (
+            <img
+              key={i}
+              src={f}
+              alt={`foto-${i}`}
+              className={`prod-gallery-thumb ${i === idx ? "active" : ""}`}
+              onClick={() => setIdx(i)}
+              onError={(e) => { e.target.style.opacity = "0.3"; }}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ─── Componente principal ─────────────────────────────────────────────
 export default function App() {
-  const [pantalla, setPantalla]           = useState("inicio");
-  const [usuario, setUsuario]             = useState(null);
-  const [perfilDB, setPerfilDB]           = useState(null);
-  const [menuOpen, setMenuOpen]           = useState(false);
-  const [busqueda, setBusqueda]           = useState("");
-  const [filtroCat, setFiltroCat]         = useState("Todos");
-  const [productos, setProductos]         = useState([]);
-  const [tiendas, setTiendas]             = useState([]);
-  const [miTienda, setMiTienda]           = useState(null);
-  const [carrito, setCarrito]             = useState([]);
+  const [pantalla, setPantalla] = useState("inicio");
+  const [usuario, setUsuario] = useState(null);
+  const [perfilDB, setPerfilDB] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [busqueda, setBusqueda] = useState("");
+  const [filtroCat, setFiltroCat] = useState("Todos");
+  const [productos, setProductos] = useState([]);
+  const [tiendas, setTiendas] = useState([]);
+  const [miTienda, setMiTienda] = useState(null);
+  const [carrito, setCarrito] = useState([]);
   const [tiendaCarrito, setTiendaCarrito] = useState(null);
-  const [modalVaciar, setModalVaciar]     = useState(null);
+  const [modalVaciar, setModalVaciar] = useState(null);
   const [mostrarPerfil, setMostrarPerfil] = useState(false);
-  const [pagandoMulta, setPagandoMulta]   = useState(false);
+  const [mostrarFormProd, setMostrarFormProd] = useState(false);
 
-  const [perfilForm, setPerfilForm]   = useState({ nombre:"", apellido:"", departamento:"", provincia:"", distrito:"" });
-  const [tiendaForm, setTiendaForm]   = useState({ nombre:"", whatsapp:"", departamento:"", provincia:"", distrito:"", direccion:"", descripcion:"" });
-  const [tiendaFoto, setTiendaFoto]   = useState(null);
+  const [perfilForm, setPerfilForm] = useState({ nombre:"", apellido:"", departamento:"", provincia:"", distrito:"" });
+  const [tiendaForm, setTiendaForm] = useState({ nombre:"", whatsapp:"", departamento:"", provincia:"", distrito:"", direccion:"", descripcion:"" });
+  const [tiendaFoto, setTiendaFoto] = useState(null);
   const [tiendaFotoPreview, setTiendaFotoPreview] = useState(null);
-  const [prodForm, setProdForm]       = useState({ nombre:"", precio:"", cantidad:"", descripcion:"", categoria:"Procesados" });
-  const [prodFotos, setProdFotos]     = useState([]);
+  const [prodForm, setProdForm] = useState({ nombre:"", precio:"", cantidad:"", descripcion:"", categoria:"Procesados" });
+  const [prodFotos, setProdFotos] = useState([]);
   const [prodFotosPrev, setProdFotosPrev] = useState([]);
-  const [misLikes, setMisLikes]       = useState([]);
+  const [misLikes, setMisLikes] = useState([]);
   const [reporteForm, setReporteForm] = useState({ tipo:"reporte_usuario", id_reportado:"", detalle:"" });
 
-  const [msg, setMsg]           = useState("");
+  const [msg, setMsg] = useState("");
   const [guardando, setGuardando] = useState(false);
   const carruselRef = useRef(null);
 
@@ -657,10 +1222,7 @@ export default function App() {
     });
     supabase.auth.onAuthStateChange((_e, session) => {
       if (session?.user) iniciarSesion(session.user);
-      else {
-        setUsuario(null); setPerfilDB(null); setMiTienda(null);
-        setMostrarPerfil(false); setPantalla("inicio");
-      }
+      else { setUsuario(null); setPerfilDB(null); setMiTienda(null); setMostrarPerfil(false); }
     });
     cargarProductos();
     cargarTiendas();
@@ -669,34 +1231,18 @@ export default function App() {
   async function iniciarSesion(user) {
     setUsuario(user);
     const { data: perfil } = await supabase.from("usuarios").select("*").eq("email", user.email).single();
-
-    // ── CHEQUEO DE BAN ────────────────────────────────────────────
-    if (perfil?.baneado) {
-      setPerfilDB(perfil);
-      setPantalla("baneado");
-      setMostrarPerfil(false);
-      return;
-    }
-
-    // ── PERFIL INCOMPLETO ─────────────────────────────────────────
     if (!perfil || !perfil.perfil_completo) {
-      setMostrarPerfil(true);
-      setPerfilDB(perfil);
-      return;
-    }
-
-    // ── SESIÓN NORMAL ─────────────────────────────────────────────
-    setPerfilDB(perfil);
-    setMostrarPerfil(false);
-    cargarMiTienda(user.id);
-    cargarMisLikes();
-    if (perfil.departamento) {
-      setTiendaForm(f => ({
-        ...f,
-        departamento: perfil.departamento || "",
-        provincia:    perfil.provincia    || "",
-        distrito:     perfil.distrito     || "",
-      }));
+      setMostrarPerfil(true); setPerfilDB(perfil);
+    } else {
+      setPerfilDB(perfil); setMostrarPerfil(false); cargarMiTienda(user.id); cargarMisLikes(user.id);
+      if (perfil.departamento) {
+        setTiendaForm(f => ({
+          ...f,
+          departamento: perfil.departamento || "",
+          provincia:    perfil.provincia    || "",
+          distrito:     perfil.distrito     || "",
+        }));
+      }
     }
   }
 
@@ -724,9 +1270,11 @@ export default function App() {
     setProductos(data || []);
   }
 
+  // FIX 2: Cargar tiendas SIN filtro de estado para no perder tiendas
   async function cargarTiendas() {
-    const { data } = await supabase.from("tiendas").select("*").eq("estado","activa");
-    setTiendas(data || []);
+    const { data, error } = await supabase.from("tiendas").select("*");
+    if (error) console.error("Error cargando tiendas:", error);
+    setTiendas((data || []).filter(t => t.estado !== "eliminada"));
   }
 
   async function cargarMiTienda(uid) {
@@ -739,9 +1287,11 @@ export default function App() {
     const cat = filtroCat === "Todos" ? null : filtroCat;
     let qP = supabase.from("productos").select("*").ilike("nombre", `%${busqueda}%`).order("likes", { ascending:false });
     if (cat) qP = qP.eq("categoria", cat);
-    const qT = supabase.from("tiendas").select("*").eq("estado","activa").ilike("nombre", `%${busqueda}%`);
+    const qT = supabase.from("tiendas").select("*").ilike("nombre", `%${busqueda}%`);
     const [{ data:p }, { data:t }] = await Promise.all([qP, qT]);
-    setProductos(p || []); setTiendas(t || []); setPantalla("busqueda");
+    setProductos(p || []);
+    setTiendas((t || []).filter(x => x.estado !== "eliminada"));
+    setPantalla("busqueda");
   }
 
   async function login() {
@@ -755,49 +1305,32 @@ export default function App() {
     setPantalla("inicio"); setMenuOpen(false);
   }
 
-  // ── PAGO MULTA ────────────────────────────────────────────────────
-  async function pagarMulta() {
-    if (!usuario || !perfilDB) return;
-    const monto = perfilDB.multa_monto || 10;
-    setPagandoMulta(true);
-    abrirPagoCulqi({
-      monto,
-      descripcion: "Multa de reactivación de cuenta - TinkaMarket",
-      email: usuario.email,
-      onSuccess: async (token) => {
-        await supabase.from("pagos").insert({
-          tipo: "multa_desbaneo", monto, estado: "pagado", token_culqi: token.id,
-        });
-        await supabase.from("usuarios").update({
-          baneado: false,
-          ban_motivo: null,
-          historial_bans: (perfilDB.historial_bans || 0) + 1,
-          multa_monto: Math.min((perfilDB.multa_monto || 10) * 2, 50),
-        }).eq("id", perfilDB.id);
-        await supabase.from("tiendas").update({ estado: "activa" }).eq("usuario_id", usuario.id);
-        setPagandoMulta(false);
-        setPantalla("inicio");
-        iniciarSesion(usuario);
-      },
-    });
-    setPagandoMulta(false);
-  }
-
+  // ─── FIX: Foto obligatoria para crear tienda ──────────────────────
   async function crearTienda() {
     if (!tiendaForm.nombre || !tiendaForm.whatsapp || !tiendaForm.departamento || !tiendaForm.provincia || !tiendaForm.distrito) {
-      setMsg("Completa los campos obligatorios."); return;
+      playSound("error"); setMsg("Completa los campos obligatorios."); return;
+    }
+    if (!tiendaFoto) {
+      playSound("error"); setMsg("📷 Debes subir una foto o logo de tu tienda."); return;
     }
     setGuardando(true);
-    let foto_url = null;
-    if (tiendaFoto) {
-      const ext = tiendaFoto.name.split(".").pop();
-      const path = `tiendas/${usuario.id}_${Date.now()}.${ext}`;
-      const { error:upErr } = await supabase.storage.from("fotos").upload(path, tiendaFoto);
-      if (!upErr) {
-        const { data:urlData } = supabase.storage.from("fotos").getPublicUrl(path);
-        foto_url = urlData.publicUrl;
-      }
+    const ext = (tiendaFoto.name.split(".").pop() || "jpg").toLowerCase().replace(/[^a-z0-9]/g, "");
+    const path = `tiendas/${usuario.id}_${Date.now()}.${ext}`;
+    const { error: upErr } = await supabase.storage.from("fotos").upload(path, tiendaFoto, {
+      cacheControl: "3600",
+      upsert: false,
+      contentType: tiendaFoto.type || "image/jpeg",
+    });
+    if (upErr) {
+      playSound("error");
+      console.error("Error subiendo foto de tienda:", upErr);
+      setMsg("Error al subir la foto. Verifica tu conexión e intenta de nuevo.");
+      setGuardando(false);
+      return;
     }
+    const { data: urlData } = supabase.storage.from("fotos").getPublicUrl(path);
+    const foto_url = urlData.publicUrl;
+
     const { data:{ user: authUser } } = await supabase.auth.getUser();
     const { data, error } = await supabase.from("tiendas").insert({
       nombre: tiendaForm.nombre, whatsapp: tiendaForm.whatsapp,
@@ -806,23 +1339,39 @@ export default function App() {
       descripcion: tiendaForm.descripcion, usuario_id: authUser.id, foto_url, estado:"activa",
       ubicacion: `${tiendaForm.distrito}, ${tiendaForm.provincia}, ${tiendaForm.departamento}`,
     }).select().single();
-    if (error) { console.error("Error tienda:", error); setMsg("Error: " + error.message); }
-    else { setMiTienda(data); setMsg("¡Tienda creada exitosamente!"); cargarTiendas(); }
+    if (error) { playSound("error"); console.error("Error tienda:", error); setMsg("Error: " + error.message); }
+    else { playSound("success"); setMiTienda(data); setMsg("¡Tienda creada exitosamente!"); cargarTiendas(); }
     setGuardando(false);
   }
 
+  // ─── FIX: Foto obligatoria para publicar producto ─────────────────
   async function publicarProducto() {
-    if (!prodForm.nombre || !prodForm.precio || !prodForm.cantidad) { setMsg("Completa los campos obligatorios."); return; }
+    if (!prodForm.nombre || !prodForm.precio || !prodForm.cantidad) {
+      playSound("error"); setMsg("Completa nombre, precio y cantidad."); return;
+    }
+    if (prodFotos.length === 0) {
+      playSound("error"); setMsg("📷 Debes subir al menos una foto del producto."); return;
+    }
     setGuardando(true);
     const fotos_urls = [];
     for (const foto of prodFotos.slice(0,4)) {
-      const ext = foto.name.split(".").pop();
-      const path = `productos/${miTienda.id}_${Date.now()}_${Math.random().toString(36).slice(2)}.${ext}`;
-      const { error: upErr } = await supabase.storage.from("fotos").upload(path, foto);
-      if (!upErr) {
+      const ext = (foto.name.split(".").pop() || "jpg").toLowerCase().replace(/[^a-z0-9]/g,"");
+      const safeName = `${miTienda.id}_${Date.now()}_${Math.random().toString(36).slice(2)}.${ext}`;
+      const path = `productos/${safeName}`;
+      const { error: upErr } = await supabase.storage.from("fotos").upload(path, foto, {
+        cacheControl: "3600",
+        upsert: false,
+        contentType: foto.type || "image/jpeg",
+      });
+      if (upErr) {
+        console.error("Error subiendo foto:", upErr);
+      } else {
         const { data: urlData } = supabase.storage.from("fotos").getPublicUrl(path);
-        fotos_urls.push(urlData.publicUrl);
+        if (urlData?.publicUrl) fotos_urls.push(urlData.publicUrl);
       }
+    }
+    if (fotos_urls.length === 0) {
+      playSound("error"); setMsg("Error al subir las fotos. Verifica tu conexión e intenta de nuevo."); setGuardando(false); return;
     }
     const { error } = await supabase.from("productos").insert({
       tienda_id: miTienda.id,
@@ -831,9 +1380,11 @@ export default function App() {
       descripcion: prodForm.descripcion, categoria: prodForm.categoria, likes:0,
       fotos: fotos_urls,
     });
-    if (error) setMsg("Error al publicar.");
+    if (error) { playSound("error"); setMsg("Error al publicar."); }
     else {
+      playSound("success");
       setMsg("¡Producto publicado!");
+      setMostrarFormProd(false);
       setProdForm({ nombre:"", precio:"", cantidad:"", descripcion:"", categoria:"Procesados" });
       setProdFotos([]); setProdFotosPrev([]);
       cargarProductos();
@@ -841,19 +1392,36 @@ export default function App() {
     setGuardando(false);
   }
 
-  async function cargarMisLikes() {
-    if (!usuario) return;
-    const { data } = await supabase.from("likes").select("producto_id").eq("usuario_id", usuario.id);
+  async function cargarMisLikes(uid) {
+    const userId = uid || usuario?.id;
+    if (!userId) return;
+    const { data } = await supabase.from("likes").select("producto_id").eq("usuario_id", userId);
     setMisLikes((data || []).map(l => l.producto_id));
   }
 
+  // ─── FIX: Likes atómicos vía RPC, no se pisan ni se duplican ──────
   async function darLike(prod) {
     if (!usuario) { login(); return; }
     if (misLikes.includes(prod.id)) return;
-    const { error } = await supabase.from("likes").insert({ usuario_id: usuario.id, producto_id: prod.id });
-    if (!error) {
-      await supabase.from("productos").update({ likes: prod.likes + 1 }).eq("id", prod.id);
-      setMisLikes(l => [...l, prod.id]);
+
+    playSound("like");
+    setMisLikes(l => [...l, prod.id]);
+    setProductos(prev => prev.map(p => p.id === prod.id ? { ...p, likes: (p.likes || 0) + 1 } : p));
+
+    const { error: likeError } = await supabase
+      .from("likes")
+      .insert({ usuario_id: usuario.id, producto_id: prod.id });
+
+    if (likeError) {
+      console.error("Error al dar like:", likeError);
+      setMisLikes(l => l.filter(id => id !== prod.id));
+      setProductos(prev => prev.map(p => p.id === prod.id ? { ...p, likes: prod.likes } : p));
+      return;
+    }
+
+    const { error: rpcError } = await supabase.rpc("incrementar_likes_producto", { p_id: prod.id });
+    if (rpcError) {
+      console.error("Error incrementando contador:", rpcError);
       cargarProductos();
     }
   }
@@ -910,54 +1478,17 @@ export default function App() {
   }
 
   const ir = (p) => { setPantalla(p); setMenuOpen(false); setMsg(""); window.scrollTo(0,0); };
+  const irAtras = (p) => { playSound("back"); ir(p); };
+
   const deps = Object.keys(UBIGEO).sort();
-  const provsDisp       = tiendaForm.departamento ? Object.keys(UBIGEO[tiendaForm.departamento] || {}).sort() : [];
-  const distDisp        = (tiendaForm.departamento && tiendaForm.provincia) ? (UBIGEO[tiendaForm.departamento]?.[tiendaForm.provincia] || []).sort() : [];
+  const provsDisp = tiendaForm.departamento ? Object.keys(UBIGEO[tiendaForm.departamento] || {}).sort() : [];
+  const distDisp = (tiendaForm.departamento && tiendaForm.provincia) ? (UBIGEO[tiendaForm.departamento]?.[tiendaForm.provincia] || []).sort() : [];
   const provsPerfilDisp = perfilForm.departamento ? Object.keys(UBIGEO[perfilForm.departamento] || {}).sort() : [];
-  const distPerfilDisp  = (perfilForm.departamento && perfilForm.provincia) ? (UBIGEO[perfilForm.departamento]?.[perfilForm.provincia] || []).sort() : [];
+  const distPerfilDisp = (perfilForm.departamento && perfilForm.provincia) ? (UBIGEO[perfilForm.departamento]?.[perfilForm.provincia] || []).sort() : [];
 
-  // ── PANTALLA DE BAN ───────────────────────────────────────────────
-  if (pantalla === "baneado" && perfilDB?.baneado) return (
-    <div className="ban-screen">
-      <style>{CSS}</style>
-      <div className="ban-card">
-        <span className="ban-icon">🚫</span>
-        <h2 className="ban-title">Cuenta suspendida</h2>
-        <p className="ban-sub">
-          Tu cuenta en TinkaMarket ha sido suspendida por el equipo de administración.
-          Puedes reactivarla pagando la multa correspondiente.
-        </p>
-        {perfilDB.ban_motivo && (
-          <div className="ban-motivo">
-            <p className="ban-motivo-label">Motivo de la suspensión</p>
-            <p className="ban-motivo-txt">{perfilDB.ban_motivo}</p>
-          </div>
-        )}
-        {perfilDB.multa_monto === 0
-          ? <div className="ban-permanente">
-              🔒 Ban permanente — esta cuenta no puede ser reactivada.
-              Si crees que es un error, escríbenos directamente.
-            </div>
-          : <div className="ban-pago">
-              <p className="ban-pago-label">Multa de reactivación</p>
-              <p className="ban-pago-monto">S/ {perfilDB.multa_monto || 10}.00</p>
-              <p className="ban-pago-sub">
-                Al pagar, tu cuenta y tus tiendas serán reactivadas inmediatamente.
-                {(perfilDB.historial_bans || 0) > 0 && (
-                  <span> La próxima multa será de S/ {Math.min((perfilDB.multa_monto || 10) * 2, 50)}.</span>
-                )}
-              </p>
-              <button className="btn-pagar-multa" onClick={pagarMulta} disabled={pagandoMulta}>
-                {pagandoMulta ? "Procesando..." : "💳 Pagar multa y reactivar cuenta"}
-              </button>
-            </div>
-        }
-        <button className="btn-logout-ban" onClick={logout}>Cerrar sesión</button>
-      </div>
-    </div>
-  );
+  const firstFoto = (p) => p.fotos && p.fotos.length > 0 ? p.fotos[0] : null;
 
-  // ── MODAL PERFIL ──────────────────────────────────────────────────
+  // ── MODAL PERFIL ─────────────────────────────────────────────────
   if (mostrarPerfil && usuario) return (
     <div className="perfil-modal">
       <style>{CSS}</style>
@@ -1007,9 +1538,9 @@ export default function App() {
         <div className="nav-actions">
           {usuario
             ? <button className="nav-btn" onClick={() => ir("carrito")}>🛒{carrito.length > 0 ? ` ${carrito.length}` : ""}</button>
-            : <button className="nav-btn nav-btn-primary" onClick={login}>Iniciar sesión</button>
+            : <button className="nav-btn" onClick={login}>Iniciar sesión</button>
           }
-          <button className="nav-btn" style={{ padding:"9px 12px" }} onClick={() => setMenuOpen(true)}>☰</button>
+          <button className="nav-btn" style={{ padding:"7px 12px" }} onClick={() => setMenuOpen(true)}>☰</button>
         </div>
       </nav>
 
@@ -1022,12 +1553,14 @@ export default function App() {
             <span className="oro">De cada rincón </span>
             <span className="verde">a tu casa.</span>
           </h1>
-          <p className="hero-sub">Compra directo a vendedores peruanos y coordina por WhatsApp</p>
+          <p className="hero-sub">El marketplace de productos peruanos auténticos</p>
           {productos.length > 0 && (
             <div className="hero-carousel" ref={carruselRef}>
-              {productos.slice(0,8).map(p => (
+              {productos.map(p => (
                 <div key={p.id} className="hero-card">
-                  <HeroImg p={p} />
+                  {firstFoto(p) && (
+                    <img src={firstFoto(p)} alt={p.nombre} className="hero-card-img" />
+                  )}
                   <p className="hero-card-name">{p.nombre}</p>
                   <p className="hero-card-price">S/ {p.precio}</p>
                   <p className="hero-card-likes">❤️ {p.likes} likes</p>
@@ -1038,6 +1571,7 @@ export default function App() {
         </div>
       )}
 
+      {/* PÁGINAS */}
       <div className="page">
 
         {/* ── INICIO ── */}
@@ -1060,7 +1594,7 @@ export default function App() {
             : <div className="grid grid-prod">
               {productos.map(p => (
                 <div key={p.id} className="prod-card">
-                  <ProdImg p={p} />
+                  <ProdImgViewer fotos={p.fotos} />
                   <div className="prod-body">
                     <p className="prod-name">{p.nombre}</p>
                     <p className="prod-price">S/ {p.precio}</p>
@@ -1104,7 +1638,7 @@ export default function App() {
           const info = CATS_INFO.find(c => c.nombre === catNom);
           return <>
             <div className="back-row">
-              <button className="btn-back" onClick={() => { ir("inicio"); cargarProductos(); }}>←</button>
+              <button className="btn-back" onClick={() => { irAtras("inicio"); cargarProductos(); }}>←</button>
               <p className="sec-title" style={{ margin:0 }}>{info?.icon} {catNom}</p>
             </div>
             {productos.length === 0
@@ -1112,7 +1646,7 @@ export default function App() {
               : <div className="grid grid-prod">
                 {productos.map(p => (
                   <div key={p.id} className="prod-card">
-                    <ProdImg p={p} />
+                    <ProdImgViewer fotos={p.fotos} />
                     <div className="prod-body">
                       <p className="prod-name">{p.nombre}</p>
                       <p className="prod-price">S/ {p.precio}</p>
@@ -1132,58 +1666,74 @@ export default function App() {
           </>;
         })()}
 
-        {/* ── PERFIL TIENDA ── */}
+        {/* ── PERFIL TIENDA estilo TikTok ── */}
         {pantalla.startsWith("tienda_") && (() => {
           const tid = pantalla.replace("tienda_","");
           const t = tiendas.find(x => x.id === tid);
           if (!t) return <div className="empty"><p className="empty-txt">Tienda no encontrada</p></div>;
           const prodsTienda = productos.filter(p => p.tienda_id === tid);
+          const totalLikes = prodsTienda.reduce((s, p) => s + (p.likes || 0), 0);
           return <>
-            <div className="back-row">
-              <button className="btn-back" onClick={() => ir("inicio")}>←</button>
-              <p className="sec-title" style={{ margin:0 }}>{t.nombre}</p>
+            <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:0 }}>
+              <button className="btn-back" onClick={() => irAtras("inicio")} style={{ zIndex:10 }}>←</button>
             </div>
-            <div className="tienda-info-card">
-              <div className="tienda-info-head">
-                {t.foto_url
-                  ? <img src={t.foto_url} alt={t.nombre} className="tienda-big-avatar" />
-                  : <div className="tienda-big-letter">{t.nombre[0]}</div>
-                }
-                <div>
-                  <p style={{ fontFamily:"var(--font-head)", fontWeight:800, fontSize:18, marginBottom:5 }}>{t.nombre}</p>
-                  <p style={{ fontSize:13, color:"var(--muted)", marginBottom:3 }}>📍 {t.distrito}, {t.provincia}, {t.departamento}</p>
-                  {t.direccion_exacta && <p style={{ fontSize:13, color:"var(--muted)", marginBottom:3 }}>🏠 {t.direccion_exacta}</p>}
-                  {t.descripcion && <p style={{ fontSize:13, color:"#555", marginTop:6 }}>{t.descripcion}</p>}
+            <div className="tienda-profile-hero" style={{ marginTop:-56, paddingTop:72 }}>
+              {t.foto_url
+                ? <img src={t.foto_url} alt={t.nombre} className="tienda-profile-avatar" />
+                : <div className="tienda-profile-avatar-letter">{t.nombre[0]}</div>
+              }
+              <h2 className="tienda-profile-name">{t.nombre}</h2>
+              <p className="tienda-profile-loc">📍 {t.distrito}, {t.provincia}, {t.departamento}</p>
+              {t.direccion_exacta && <p className="tienda-profile-loc">🏠 {t.direccion_exacta}</p>}
+              {t.descripcion && <p className="tienda-profile-desc">{t.descripcion}</p>}
+              <div className="tienda-profile-stats">
+                <div className="tienda-profile-stat">
+                  <p className="tienda-profile-stat-val">{prodsTienda.length}</p>
+                  <p className="tienda-profile-stat-lbl">Productos</p>
+                </div>
+                <div style={{ width:1, background:"rgba(255,255,255,0.25)", margin:"0 4px" }} />
+                <div className="tienda-profile-stat">
+                  <p className="tienda-profile-stat-val">{totalLikes}</p>
+                  <p className="tienda-profile-stat-lbl">❤️ Likes</p>
                 </div>
               </div>
-              <button className="btn-wa" onClick={() => verWhatsApp(t)}>📲 Contactar por WhatsApp</button>
-              <p className="notice">🔒 Al contactar se registra tu ID para seguridad de ambas partes</p>
-            </div>
-            {prodsTienda.length === 0
-              ? <div className="empty"><div className="empty-icon">📦</div><p className="empty-txt">Esta tienda aún no tiene productos</p></div>
-              : <div className="grid grid-prod">
-                {prodsTienda.map(p => (
-                  <div key={p.id} className="prod-card">
-                    <ProdImg p={p} />
-                    <div className="prod-body">
-                      <p className="prod-name">{p.nombre}</p>
-                      <p className="prod-price">S/ {p.precio}</p>
-                      <button className="btn-primary" style={{ marginTop:8, marginBottom:0, fontSize:13, padding:"9px 0" }}
-                        onClick={() => { if(!usuario){login();return;} agregarCarrito(p,t); }}>
-                        Agregar al carrito
-                      </button>
-                    </div>
-                  </div>
-                ))}
+              <div className="tienda-profile-actions">
+                <button className="btn-wa-pill" onClick={() => verWhatsApp(t)}>
+                  📲 Contactar por WhatsApp
+                </button>
               </div>
-            }
+              <p className="notice" style={{ color:"rgba(255,255,255,0.55)", marginTop:10, position:"relative", zIndex:1 }}>
+                🔒 Tu ID queda registrado al contactar
+              </p>
+            </div>
+            <div style={{ marginTop:24 }}>
+              {prodsTienda.length === 0
+                ? <div className="empty"><div className="empty-icon">📦</div><p className="empty-txt">Esta tienda aún no tiene productos</p></div>
+                : <div className="grid grid-prod">
+                  {prodsTienda.map(p => (
+                    <div key={p.id} className="prod-card">
+                      <ProdImgViewer fotos={p.fotos} />
+                      <div className="prod-body">
+                        <p className="prod-name">{p.nombre}</p>
+                        <p className="prod-price">S/ {p.precio}</p>
+                        {p.descripcion && <p style={{ fontSize:12, color:"var(--muted)", lineHeight:1.5 }}>{p.descripcion}</p>}
+                        <button className="btn-primary" style={{ marginTop:8, marginBottom:0, fontSize:13, padding:"9px 0" }}
+                          onClick={() => { if(!usuario){login();return;} agregarCarrito(p,t); }}>
+                          Agregar al carrito
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              }
+            </div>
           </>;
         })()}
 
         {/* ── BÚSQUEDA ── */}
         {pantalla === "busqueda" && <>
           <div className="back-row">
-            <button className="btn-back" onClick={() => { ir("inicio"); cargarProductos(); cargarTiendas(); setBusqueda(""); }}>←</button>
+            <button className="btn-back" onClick={() => { irAtras("inicio"); cargarProductos(); cargarTiendas(); setBusqueda(""); }}>←</button>
             <p className="sec-title" style={{ margin:0 }}>Resultados de búsqueda</p>
           </div>
           <div style={{ marginBottom:18 }}>
@@ -1198,7 +1748,7 @@ export default function App() {
               {productos.length > 0 && <div className="grid grid-prod">
                 {productos.map(p => (
                   <div key={p.id} className="prod-card">
-                    <ProdImg p={p} />
+                    <ProdImgViewer fotos={p.fotos} />
                     <div className="prod-body">
                       <p className="prod-name">{p.nombre}</p>
                       <p className="prod-price">S/ {p.precio}</p>
@@ -1224,7 +1774,7 @@ export default function App() {
         {/* ── CARRITO ── */}
         {pantalla === "carrito" && <>
           <div className="back-row">
-            <button className="btn-back" onClick={() => ir("inicio")}>←</button>
+            <button className="btn-back" onClick={() => irAtras("inicio")}>←</button>
             <p className="sec-title" style={{ margin:0 }}>Mi carrito 🛒</p>
           </div>
           {!usuario
@@ -1242,7 +1792,13 @@ export default function App() {
                   <p style={{ fontSize:13, color:"var(--muted)", marginBottom:16 }}>Tienda: <strong>{tiendaCarrito?.nombre}</strong></p>
                   {carrito.map((p, i) => (
                     <div key={i} className="cart-item">
-                      <span style={{ fontSize:14 }}>{p.nombre}</span>
+                      <div style={{ display:"flex", alignItems:"center", gap:10 }}>
+                        {firstFoto(p) && (
+                          <img src={firstFoto(p)} alt={p.nombre}
+                            style={{ width:40, height:40, borderRadius:8, objectFit:"cover", flexShrink:0 }} />
+                        )}
+                        <span style={{ fontSize:14 }}>{p.nombre}</span>
+                      </div>
                       <span style={{ fontWeight:800, color:"var(--rojo)", fontFamily:"var(--font-head)" }}>S/ {p.precio}</span>
                     </div>
                   ))}
@@ -1257,10 +1813,10 @@ export default function App() {
           }
         </>}
 
-        {/* ── MI PERFIL ── */}
+        {/* ── MI PERFIL con avatar de persona ── */}
         {pantalla === "miperfil" && <>
           <div className="back-row">
-            <button className="btn-back" onClick={() => ir("inicio")}>←</button>
+            <button className="btn-back" onClick={() => irAtras("inicio")}>←</button>
             <p className="sec-title" style={{ margin:0 }}>Mi perfil</p>
           </div>
           {!usuario
@@ -1269,9 +1825,7 @@ export default function App() {
             </div>
             : <div className="form-card">
               <div style={{ textAlign:"center", marginBottom:28 }}>
-                <div style={{ width:80, height:80, borderRadius:22, background:"var(--grad)", display:"flex", alignItems:"center", justifyContent:"center", color:"white", fontWeight:900, fontSize:32, margin:"0 auto 14px", boxShadow:"0 6px 20px rgba(192,57,43,0.3)", fontFamily:"var(--font-head)" }}>
-                  {(perfilDB?.nombre || usuario.user_metadata?.full_name || "U")[0].toUpperCase()}
-                </div>
+                <PersonAvatar size={88} style={{ margin:"0 auto 14px" }} />
                 <p style={{ fontFamily:"var(--font-head)", fontWeight:800, fontSize:19, marginBottom:4 }}>{perfilDB ? `${perfilDB.nombre} ${perfilDB.apellidos || ''}`.trim() : usuario.user_metadata?.full_name}</p>
                 <p style={{ fontSize:13, color:"var(--muted)", marginBottom:18 }}>{usuario.email}</p>
                 <div className="id-badge">{perfilDB?.usuario_id || "--------"}</div>
@@ -1285,96 +1839,282 @@ export default function App() {
         {/* ── MI TIENDA ── */}
         {pantalla === "mitienda" && <>
           <div className="back-row">
-            <button className="btn-back" onClick={() => ir("inicio")}>←</button>
+            <button className="btn-back" onClick={() => { irAtras("inicio"); }}>←</button>
             <p className="sec-title" style={{ margin:0 }}>Mi tienda</p>
           </div>
+
           {!usuario
             ? <div className="empty">
-              <button className="btn-primary" style={{ maxWidth:280, margin:"0 auto" }} onClick={login}>Iniciar sesión con Google</button>
-            </div>
+                <button className="btn-primary" style={{ maxWidth:280, margin:"0 auto" }} onClick={() => { playSound("click"); login(); }}>
+                  Iniciar sesión con Google
+                </button>
+              </div>
+
             : !miTienda
               ? <div className="form-card">
-                <p className="form-title">Crea tu tienda 🏪</p>
-                <p className="form-sub">300 días activa · 5 productos gratis · S/ 1 por producto extra</p>
-                <div className="upload-area" onClick={() => document.getElementById("fotoTienda").click()}>
-                  {tiendaFotoPreview
-                    ? <img src={tiendaFotoPreview} alt="preview" style={{ maxHeight:120, borderRadius:10, maxWidth:"100%" }} />
-                    : <p style={{ color:"var(--muted)", margin:0, fontSize:14 }}>📷 Foto o logo de tu tienda</p>
-                  }
-                  <input id="fotoTienda" type="file" accept="image/*" style={{ display:"none" }} onChange={e => {
-                    const f = e.target.files[0];
-                    if (f) { setTiendaFoto(f); setTiendaFotoPreview(URL.createObjectURL(f)); }
-                  }} />
-                </div>
-                <input className="inp" placeholder="Nombre de la tienda o marca *" value={tiendaForm.nombre} onChange={e => setTiendaForm({...tiendaForm, nombre:e.target.value})} />
-                <input className="inp" placeholder="WhatsApp (solo números, sin +51) *" value={tiendaForm.whatsapp} onChange={e => setTiendaForm({...tiendaForm, whatsapp:e.target.value})} />
-                <select className="inp" value={tiendaForm.departamento} onChange={e => setTiendaForm({...tiendaForm, departamento:e.target.value, provincia:"", distrito:""})}>
-                  <option value="">— Departamento *</option>
-                  {deps.map(d => <option key={d} value={d}>{d}</option>)}
-                </select>
-                <select className="inp" value={tiendaForm.provincia} onChange={e => setTiendaForm({...tiendaForm, provincia:e.target.value, distrito:""})} disabled={!tiendaForm.departamento}>
-                  <option value="">— Provincia *</option>
-                  {provsDisp.map(p => <option key={p} value={p}>{p}</option>)}
-                </select>
-                <select className="inp" value={tiendaForm.distrito} onChange={e => setTiendaForm({...tiendaForm, distrito:e.target.value})} disabled={!tiendaForm.provincia}>
-                  <option value="">— Distrito *</option>
-                  {distDisp.map(d => <option key={d} value={d}>{d}</option>)}
-                </select>
-                <input className="inp" placeholder="Dirección exacta (opcional)" value={tiendaForm.direccion} onChange={e => setTiendaForm({...tiendaForm, direccion:e.target.value})} />
-                <textarea className="inp" style={{ height:80 }} placeholder="Descripción de tu tienda (opcional)" value={tiendaForm.descripcion} onChange={e => setTiendaForm({...tiendaForm, descripcion:e.target.value})} />
-                {msg && <p className={msg.includes("!")?"msg-ok":"msg-err"}>{msg}</p>}
-                <button className="btn-primary" onClick={crearTienda} disabled={guardando}>{guardando?"Creando...":"Crear tienda"}</button>
-                <button className="btn-secondary" onClick={() => ir("inicio")}>Cancelar</button>
-              </div>
-              : <>
-                <div className="tienda-info-card">
-                  <div className="tienda-info-head" style={{ marginBottom:0 }}>
-                    {miTienda.foto_url
-                      ? <img src={miTienda.foto_url} alt={miTienda.nombre} className="tienda-big-avatar" />
-                      : <div className="tienda-big-letter">{miTienda.nombre[0]}</div>
-                    }
-                    <div>
-                      <p style={{ fontFamily:"var(--font-head)", fontWeight:800, fontSize:17, marginBottom:4 }}>{miTienda.nombre}</p>
-                      <p style={{ fontSize:13, color:"var(--muted)", marginBottom:2 }}>📍 {miTienda.distrito}, {miTienda.provincia}, {miTienda.departamento}</p>
-                      <p style={{ fontSize:13, color:"var(--muted)" }}>📲 {miTienda.whatsapp}</p>
-                    </div>
-                  </div>
-                </div>
+                  <p className="form-title">Crea tu tienda 🏪</p>
+                  <p className="form-sub">300 días activa · 5 productos gratis · S/ 1 por producto extra</p>
 
-                <p className="sec-title">Publicar producto</p>
-                <div className="form-card" style={{ margin:"0 0 24px" }}>
-                  <p style={{ fontWeight:600, fontSize:13, marginBottom:8, color:"var(--muted)" }}>📷 Fotos del producto (máximo 4)</p>
-                  <div className="upload-area" onClick={() => document.getElementById("fotosProducto").click()}>
-                    {prodFotosPrev.length > 0
-                      ? <div style={{ display:"flex", gap:8, flexWrap:"wrap", justifyContent:"center" }}>
-                          {prodFotosPrev.map((p,i) => <img key={i} src={p} style={{ height:80, borderRadius:8, objectFit:"cover" }} />)}
+                  {/* Foto OBLIGATORIA de tienda */}
+                  <p style={{ fontWeight:800, fontSize:13, marginBottom:4, color:"var(--cafe)" }}>
+                    📷 Foto o logo de tu tienda <span style={{ color:"var(--rojo)" }}>*</span>
+                  </p>
+                  <p style={{ fontSize:12, color:"var(--muted)", marginBottom:8 }}>Obligatorio</p>
+                  <div className="upload-area"
+                    style={{ borderColor: !tiendaFoto ? "#D0C8BC" : "var(--verde)", background: tiendaFoto ? "#F0FFF6" : "var(--gris)" }}
+                    onClick={() => { playSound("click"); document.getElementById("fotoTienda").click(); }}>
+                    {tiendaFotoPreview
+                      ? <div>
+                          <img src={tiendaFotoPreview} alt="preview" style={{ maxHeight:120, borderRadius:10, maxWidth:"100%" }} />
+                          <p style={{ fontSize:12, color:"var(--verde)", fontWeight:700, marginTop:6 }}>✅ Foto lista. Toca para cambiar.</p>
                         </div>
-                      : <p style={{ color:"var(--muted)", margin:0, fontSize:14 }}>📷 Toca para agregar fotos (máx. 4)</p>
+                      : <div>
+                          <p style={{ fontSize:28, marginBottom:6 }}>📷</p>
+                          <p style={{ color:"var(--rojo)", margin:0, fontSize:14, fontWeight:800 }}>Toca para subir foto (obligatorio)</p>
+                        </div>
                     }
-                    <input id="fotosProducto" type="file" accept="image/*" multiple style={{ display:"none" }} onChange={e => {
-                      const files = Array.from(e.target.files).slice(0,4);
-                      setProdFotos(files);
-                      setProdFotosPrev(files.map(f => URL.createObjectURL(f)));
+                    <input id="fotoTienda" type="file" accept="image/*" style={{ display:"none" }} onChange={e => {
+                      const f = e.target.files[0];
+                      if (f) { setTiendaFoto(f); setTiendaFotoPreview(URL.createObjectURL(f)); }
                     }} />
                   </div>
-                  <input className="inp" placeholder="Nombre del producto *" value={prodForm.nombre} onChange={e => setProdForm({...prodForm, nombre:e.target.value.toUpperCase()})} />
-                  <input className="inp" placeholder="Precio en soles *" type="number" value={prodForm.precio} onChange={e => setProdForm({...prodForm, precio:e.target.value})} />
-                  <input className="inp" placeholder="Cantidad disponible *" type="number" value={prodForm.cantidad} onChange={e => setProdForm({...prodForm, cantidad:e.target.value})} />
-                  <select className="inp" value={prodForm.categoria} onChange={e => setProdForm({...prodForm, categoria:e.target.value})}>
-                    {CATS.map(c => <option key={c} value={c}>{c}</option>)}
+
+                  <input className="inp" placeholder="Nombre de la tienda o marca *" value={tiendaForm.nombre} onChange={e => setTiendaForm({...tiendaForm, nombre:e.target.value})} />
+                  <input className="inp" placeholder="WhatsApp (solo números, sin +51) *" value={tiendaForm.whatsapp} onChange={e => setTiendaForm({...tiendaForm, whatsapp:e.target.value})} />
+                  <select className="inp" value={tiendaForm.departamento} onChange={e => setTiendaForm({...tiendaForm, departamento:e.target.value, provincia:"", distrito:""})}>
+                    <option value="">— Departamento *</option>
+                    {deps.map(d => <option key={d} value={d}>{d}</option>)}
                   </select>
-                  <textarea className="inp" style={{ height:70 }} placeholder="Descripción del producto (opcional)" value={prodForm.descripcion} onChange={e => setProdForm({...prodForm, descripcion:e.target.value})} />
+                  <select className="inp" value={tiendaForm.provincia} onChange={e => setTiendaForm({...tiendaForm, provincia:e.target.value, distrito:""})} disabled={!tiendaForm.departamento}>
+                    <option value="">— Provincia *</option>
+                    {provsDisp.map(p => <option key={p} value={p}>{p}</option>)}
+                  </select>
+                  <select className="inp" value={tiendaForm.distrito} onChange={e => setTiendaForm({...tiendaForm, distrito:e.target.value})} disabled={!tiendaForm.provincia}>
+                    <option value="">— Distrito *</option>
+                    {distDisp.map(d => <option key={d} value={d}>{d}</option>)}
+                  </select>
+                  <input className="inp" placeholder="Dirección exacta (opcional)" value={tiendaForm.direccion} onChange={e => setTiendaForm({...tiendaForm, direccion:e.target.value})} />
+                  <textarea className="inp" style={{ height:80 }} placeholder="Descripción de tu tienda (opcional)" value={tiendaForm.descripcion} onChange={e => setTiendaForm({...tiendaForm, descripcion:e.target.value})} />
                   {msg && <p className={msg.includes("!")?"msg-ok":"msg-err"}>{msg}</p>}
-                  <button className="btn-primary" onClick={publicarProducto} disabled={guardando}>{guardando?"Publicando...":"Publicar producto"}</button>
+                  <button className="btn-primary" onClick={() => { playSound("click"); crearTienda(); }}
+                    disabled={guardando || !tiendaFoto}
+                    style={{ opacity: !tiendaFoto ? 0.5 : 1 }}>
+                    {guardando ? "Creando..." : !tiendaFoto ? "📷 Agrega una foto primero" : "Crear tienda"}
+                  </button>
+                  <button className="btn-secondary" onClick={() => { irAtras("inicio"); }}>Cancelar</button>
                 </div>
-              </>
+
+              : (() => {
+                  const prodsTienda = productos.filter(p => p.tienda_id === miTienda.id);
+                  const totalLikes = prodsTienda.reduce((s, p) => s + (p.likes || 0), 0);
+                  const tokensLibres = 5;
+                  const tokensUsados = prodsTienda.length;
+                  const tokensComprados = miTienda.tokens_extra || 0;
+                  const tokensTotal = tokensLibres + tokensComprados;
+                  const tokensPct = Math.min(100, Math.round((tokensUsados / Math.max(tokensTotal, 1)) * 100));
+                  const { dias, estado: estadoDias, diasRestantes } = calcularDiasActivos(miTienda);
+
+                  return <>
+                    {estadoDias === "gracia" && (
+                      <div className="alerta-dias">
+                        <span className="alerta-dias-icon">⚠️</span>
+                        <div className="alerta-dias-txt">Tu tienda venció hace {dias - 300} días. Tienes {diasRestantes} día{diasRestantes !== 1 ? "s" : ""} para renovar por S/ 5.</div>
+                      </div>
+                    )}
+                    {estadoDias === "vencida" && (
+                      <div className="alerta-dias" style={{ background:"linear-gradient(135deg,#FFE0DC,#FFCCC7)", borderColor:"#FF4D4D" }}>
+                        <span className="alerta-dias-icon">🚨</span>
+                        <div className="alerta-dias-txt" style={{ color:"#8B0000" }}>Tu tienda está vencida. Reactívala por S/ 10 para seguir vendiendo.</div>
+                      </div>
+                    )}
+
+                    {/* ── DASHBOARD LAYOUT (imagen referencia) ── */}
+                    <div className="tienda-dash">
+
+                      {/* ── COLUMNA IZQUIERDA ── */}
+                      <div className="tienda-dash-left">
+
+                        <div className="tienda-dash-avatar-card">
+                          {miTienda.foto_url
+                            ? <img src={miTienda.foto_url} alt={miTienda.nombre} className="tienda-dash-avatar" />
+                            : <div className="tienda-dash-avatar-letter">{miTienda.nombre[0]}</div>
+                          }
+                          <p className="tienda-dash-name">{miTienda.nombre}</p>
+                          <p className="tienda-dash-handle">@{miTienda.nombre.toLowerCase().replace(/\s+/g,"")}</p>
+                          <p className="tienda-dash-loc">📍 {miTienda.distrito}, {miTienda.provincia}, {miTienda.departamento}</p>
+                          <p className="tienda-dash-wa">🇵🇪 +51 {miTienda.whatsapp}</p>
+                        </div>
+
+                        <div className="tienda-dash-stats">
+                          <p style={{ fontFamily:"var(--font-head)", fontWeight:800, fontSize:12, color:"var(--cafe)", textTransform:"uppercase", letterSpacing:"0.5px", marginBottom:4 }}>Estadísticas</p>
+                          <div className="tienda-dash-stat">
+                            <span className="tienda-dash-stat-lbl">Productos</span>
+                            <span className="tienda-dash-stat-val">{prodsTienda.length}</span>
+                          </div>
+                          <div className="tienda-dash-stat">
+                            <span className="tienda-dash-stat-lbl">❤️ Likes</span>
+                            <span className="tienda-dash-stat-val">{totalLikes}</span>
+                          </div>
+                          <div className="tienda-dash-stat">
+                            <span className="tienda-dash-stat-lbl">Días activa</span>
+                            <span className="tienda-dash-stat-val" style={{
+                              color: estadoDias === "vencida" ? "#CC0000" : estadoDias === "gracia" ? "#D4700A" : "var(--rojo)"
+                            }}>{dias}</span>
+                          </div>
+                        </div>
+
+                        <div className="tienda-dash-salud">
+                          <p className="tienda-dash-salud-title">🏆 Salud de la tienda</p>
+                          <div style={{ marginBottom:14 }}>
+                            <p style={{ fontSize:12, fontWeight:700, color:"var(--cafe)", marginBottom:4 }}>⏳ Tiempo de vida de la tienda</p>
+                            <div className="tokens-track">
+                              <div className="tokens-fill" style={{
+                                width: Math.min(100, (dias / 300) * 100) + "%",
+                                background: estadoDias === "vencida" ? "linear-gradient(90deg,#CC0000,#FF4444)" :
+                                            estadoDias === "gracia" ? "linear-gradient(90deg,#D4700A,#F5C842)" : "var(--grad)"
+                              }} />
+                            </div>
+                            <p style={{ fontSize:11, color:"var(--muted)", marginTop:3 }}>
+                              {estadoDias === "activa" ? `Día ${dias} de 300 · Te quedan ${diasRestantes} días` :
+                               estadoDias === "gracia" ? `Venció hace ${dias-300} días · ${diasRestantes} días para renovar` :
+                               "Tienda vencida"}
+                            </p>
+                            {(estadoDias === "gracia" || estadoDias === "vencida") && (
+                              <button className="btn-comprar-tokens" style={{ marginTop:8, width:"100%" }}
+                                onClick={() => { playSound("click"); pagarTienda(estadoDias === "gracia" ? 5 : 10, "Renovar tienda - TinkaMarket"); }}>
+                                Renovar S/ {estadoDias === "gracia" ? 5 : 10}
+                              </button>
+                            )}
+                          </div>
+                          <div>
+                            <p style={{ fontSize:12, fontWeight:700, color:"var(--cafe)", marginBottom:4 }}>📦 Publicaciones usadas</p>
+                            <div className="tokens-track">
+                              <div className="tokens-fill" style={{ width: tokensPct + "%" }} />
+                            </div>
+                            <p style={{ fontSize:11, color:"var(--muted)", marginTop:3 }}>
+                              {tokensUsados} de {tokensTotal} ({tokensPct}%)
+                            </p>
+                            {tokensUsados >= tokensTotal && (
+                              <button className="btn-comprar-tokens" style={{ marginTop:8, width:"100%" }}
+                                onClick={() => { playSound("click"); pagarTienda(1, "Publicación extra - TinkaMarket"); }}>
+                                + Comprar publicación
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* ── COLUMNA DERECHA: productos grid ── */}
+                      <div className="tienda-dash-right">
+                        <p className="tienda-dash-prods-title">Tus productos ({prodsTienda.length})</p>
+                        {prodsTienda.length === 0
+                          ? <div className="empty" style={{ marginBottom:0 }}>
+                              <div className="empty-icon">📦</div>
+                              <p className="empty-txt">Aún no tienes productos publicados</p>
+                            </div>
+                          : <div className="tienda-dash-prods-grid">
+                              {prodsTienda.map(p => {
+                                const { diaActual, estado: estProd, diasRestantes: drProd } = calcularDiasProducto(p);
+                                return (
+                                  <div key={p.id} className="tienda-dash-prod-card">
+                                    {p.fotos && p.fotos.length > 0 && p.fotos[0]
+                                      ? <img src={p.fotos[0]} alt={p.nombre} className="tienda-dash-prod-img"
+                                          onError={e => { e.target.onerror = null; e.target.style.display = "none"; }} />
+                                      : <div className="tienda-dash-prod-img-placeholder">📦</div>
+                                    }
+                                    <div className="tienda-dash-prod-body">
+                                      <p className="tienda-dash-prod-name">{p.nombre}</p>
+                                      <p className="tienda-dash-prod-meta">❤️ {p.likes || 0} likes · {p.cantidad} disponibles</p>
+                                      <p className="tienda-dash-prod-meta" style={{ fontSize: 10, marginTop: -2 }}>
+                                        {estProd === "activo" && `Día ${diaActual} de 30`}
+                                        {estProd === "gracia" && `Vencido · gracia ${drProd}d`}
+                                        {estProd === "vencido" && "Vencido"}
+                                      </p>
+                                      <div className="tienda-dash-prod-price-row">
+                                        <span className="tienda-dash-prod-price">S/ {p.precio}</span>
+                                        <span className={`prod-dias-badge ${estProd === "activo" ? "prod-dias-activo" : estProd === "gracia" ? "prod-dias-gracia" : "prod-dias-vencido"}`}>
+                                          {estProd === "activo" ? `${drProd}d` : estProd === "gracia" ? `⚠️ ${drProd}d` : "Vencido"}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                        }
+                      </div>
+                    </div>
+
+                    {/* ── BOTÓN TOGGLE PUBLICAR ── */}
+                    <button
+                      className="btn-toggle-form"
+                      onClick={() => {
+                        const next = !mostrarFormProd;
+                        playSound(next ? "open" : "close");
+                        setMostrarFormProd(next);
+                      }}
+                    >
+                      <span>{mostrarFormProd ? "Cerrar formulario" : "➕  Publicar nuevo producto"}</span>
+                      <span className={`btn-toggle-arrow ${mostrarFormProd ? "open" : ""}`}>▾</span>
+                    </button>
+
+                    {/* ── FORMULARIO COLAPSABLE ── */}
+                    <div className={`form-slide ${mostrarFormProd ? "visible" : ""}`}>
+                      <div className="form-card" style={{ margin:"0 0 24px" }}>
+                        <p style={{ fontWeight:800, fontSize:13, marginBottom:4, color:"var(--cafe)" }}>📷 Foto del producto <span style={{ color:"var(--rojo)" }}>*</span></p>
+                        <p style={{ fontSize:12, color:"var(--muted)", marginBottom:8 }}>Obligatorio · mínimo 1, máximo 4 fotos</p>
+                        <div className="upload-area"
+                          style={{ borderColor: prodFotos.length === 0 ? "#D0C8BC" : "var(--verde)", background: prodFotos.length > 0 ? "#F0FFF6" : "var(--gris)" }}
+                          onClick={() => { playSound("click"); document.getElementById("fotosProducto").click(); }}>
+                          {prodFotosPrev.length > 0
+                            ? <div style={{ display:"flex", gap:8, flexWrap:"wrap", justifyContent:"center" }}>
+                                {prodFotosPrev.map((prev,i) => (
+                                  <img key={i} src={prev} style={{ height:80, borderRadius:8, objectFit:"cover" }} alt={`preview-${i}`} />
+                                ))}
+                                <p style={{ width:"100%", textAlign:"center", fontSize:12, color:"var(--verde)", fontWeight:700, marginTop:4 }}>
+                                  ✅ {prodFotosPrev.length} foto{prodFotosPrev.length > 1 ? "s" : ""} lista{prodFotosPrev.length > 1 ? "s" : ""}. Toca para cambiar.
+                                </p>
+                              </div>
+                            : <div>
+                                <p style={{ fontSize:28, marginBottom:6 }}>📷</p>
+                                <p style={{ color:"var(--rojo)", margin:0, fontSize:14, fontWeight:800 }}>Toca para subir fotos (obligatorio)</p>
+                                <p style={{ color:"var(--muted)", margin:"4px 0 0", fontSize:12 }}>Sin foto no se puede publicar</p>
+                              </div>
+                          }
+                          <input id="fotosProducto" type="file" accept="image/*" multiple style={{ display:"none" }} onChange={e => {
+                            const files = Array.from(e.target.files).slice(0,4);
+                            if (files.length > 0) { setProdFotos(files); setProdFotosPrev(files.map(f => URL.createObjectURL(f))); }
+                          }} />
+                        </div>
+                        <input className="inp" placeholder="Nombre del producto *" value={prodForm.nombre} onChange={e => setProdForm({...prodForm, nombre:e.target.value.toUpperCase()})} />
+                        <input className="inp" placeholder="Precio en soles *" type="number" min="0" step="0.5" value={prodForm.precio} onChange={e => setProdForm({...prodForm, precio:e.target.value})} />
+                        <input className="inp" placeholder="Cantidad disponible *" type="number" min="1" value={prodForm.cantidad} onChange={e => setProdForm({...prodForm, cantidad:e.target.value})} />
+                        <select className="inp" value={prodForm.categoria} onChange={e => setProdForm({...prodForm, categoria:e.target.value})}>
+                          {CATS.map(c => <option key={c} value={c}>{c}</option>)}
+                        </select>
+                        <textarea className="inp" style={{ height:70 }} placeholder="Descripción del producto (opcional)" value={prodForm.descripcion} onChange={e => setProdForm({...prodForm, descripcion:e.target.value})} />
+                        <div style={{ background:"#FFF8F0", border:"1px solid #F5C842", borderRadius:10, padding:"10px 14px", marginBottom:12, fontSize:12, color:"#7A5A00" }}>
+                          ⏰ Esta publicación durará <strong>30 días</strong> (Día 1 al Día 30). Al vencer tendrás 2 días para renovarla.
+                        </div>
+                        {msg && <p className={msg.includes("!")?"msg-ok":"msg-err"}>{msg}</p>}
+                        <button className="btn-primary" onClick={() => { playSound("click"); publicarProducto(); }} disabled={guardando || prodFotos.length === 0}
+                          style={{ opacity: prodFotos.length === 0 ? 0.5 : 1 }}>
+                          {guardando ? "Publicando..." : prodFotos.length === 0 ? "📷 Agrega una foto primero" : "Publicar producto"}
+                        </button>
+                        <button className="btn-secondary" onClick={() => { playSound("close"); setMostrarFormProd(false); }}>
+                          Cancelar
+                        </button>
+                      </div>
+                    </div>
+                  </>;
+                })()
           }
         </>}
 
         {/* ── SOPORTE ── */}
         {pantalla === "soporte" && <>
           <div className="back-row">
-            <button className="btn-back" onClick={() => ir("inicio")}>←</button>
+            <button className="btn-back" onClick={() => irAtras("inicio")}>←</button>
             <p className="sec-title" style={{ margin:0 }}>Soporte</p>
           </div>
           <div className="form-card">
@@ -1400,7 +2140,7 @@ export default function App() {
         {/* ── POLÍTICAS ── */}
         {pantalla === "politicas" && <>
           <div className="back-row">
-            <button className="btn-back" onClick={() => ir("inicio")}>←</button>
+            <button className="btn-back" onClick={() => irAtras("inicio")}>←</button>
             <p className="sec-title" style={{ margin:0 }}>Políticas de uso</p>
           </div>
           <div style={{ maxWidth:700, margin:"0 auto" }}>
@@ -1410,10 +2150,9 @@ export default function App() {
               ["🏪 Tiendas","Cada tienda dura 300 días. Al vencer, tienes 10 días para pagar S/ 5 y reactivarla. Si no, se elimina. Para reactivarla pagas S/ 10. Registrar la misma tienda eliminada se detecta como infracción."],
               ["📦 Productos","Cada publicación dura 30 días. Al vencer tienes 2 días para republicar. Tienes 5 productos gratis; cada extra cuesta S/ 1 (máximo 100). Solo puedes cambiar el precio una vez al día."],
               ["💳 Pagos","Los pagos de activación se realizan por Yape o tarjeta via Culqi. El beneficio se activa inmediatamente. TinkaMarket no procesa pagos entre compradores y vendedores."],
-              ["⚖️ Multas por infracción","Las cuentas suspendidas pueden reactivarse pagando una multa. Primera infracción: S/ 10. Segunda: S/ 20. Grave o reincidente: S/ 50. Los bans permanentes no tienen opción de pago."],
               ["🔒 Privacidad y seguridad","El número de WhatsApp del vendedor solo se revela cuando el comprador decide contactar. Cada contacto queda registrado con el ID del comprador para seguridad de ambas partes."],
               ["⚖️ Responsabilidad","TinkaMarket conecta compradores y vendedores, pero no se hace responsable de la calidad, entrega o pago de las transacciones."],
-              ["🚷 Cuentas baneadas","Las cuentas que infrinjan estas políticas serán baneadas. Si no pagan la multa dentro de 30 días, el ban se vuelve permanente."],
+              ["🚷 Cuentas baneadas","Las cuentas que infrinjan estas políticas serán baneadas y añadidas a la lista negra permanente."],
             ].map(([t,txt]) => (
               <div key={t} className="pol-item">
                 <p className="pol-title">{t}</p>
@@ -1426,7 +2165,7 @@ export default function App() {
         {/* ── CÓMO VENDER ── */}
         {pantalla === "comovender" && <>
           <div className="back-row">
-            <button className="btn-back" onClick={() => ir("inicio")}>←</button>
+            <button className="btn-back" onClick={() => irAtras("inicio")}>←</button>
             <p className="sec-title" style={{ margin:0 }}>Cómo vender en TinkaMarket</p>
           </div>
           <div className="form-card" style={{ maxWidth:700 }}>
